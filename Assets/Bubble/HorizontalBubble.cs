@@ -2,16 +2,27 @@ using UnityEngine;
 
 public class HorizontalBouncingBubble : BubbleBase
 {
+    public Rigidbody2D playerRb;
     public float moveSpeed = 2f; // Velocidade horizontal da bolha
     public float bounceForce = 10f; // Forca do pulo adicional
-    private Vector2 moveDirection = Vector2.right; // Dire��o inicial do movimento
+    public enum Direction
+    {
+        Left = -1,
+        Right = 1
+    }
+
+    // Variável para selecionar a direção via dropdown
+    public Direction moveDirection = Direction.Right;
 
     private void FixedUpdate() => BubbleLogic();
 
     protected override void BubbleLogic()
     {
         // Bolha move na horizontal
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        var xVelocity = (float)moveDirection * moveSpeed * Time.deltaTime;
+        myRb.linearVelocity = new Vector2(xVelocity, myRb.linearVelocity.y);
+
+        //transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -21,7 +32,7 @@ public class HorizontalBouncingBubble : BubbleBase
         // Faz o player quicar
         if (collision.CompareTag("Player"))
         {
-            //playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
+            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
         }
     }
 }
