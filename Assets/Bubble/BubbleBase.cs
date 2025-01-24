@@ -4,11 +4,18 @@ public abstract class BubbleBase : MonoBehaviour
 {
     public Transform player;
 
-    protected abstract void Use();
+    protected abstract void BubbleLogic();
 
-    protected virtual void PopBubble()
+    protected virtual void PopBubble(bool isTimeSensitive = false, float lifeTime = 0)
     {
         ReleasePlayer();
+
+        if (isTimeSensitive)
+        {
+            Destroy(gameObject, lifeTime);
+            return;
+        }
+
         Destroy(gameObject);
     }
 

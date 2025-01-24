@@ -9,14 +9,15 @@ public class VerticalBubble : BubbleBase
 
     void Update()
     {
-        Use();
+        BubbleLogic();
     }
 
-    protected override void Use()
+    protected override void BubbleLogic()
     {
         // Bolha sobe
         transform.position += Vector3.up * floatSpeed * Time.deltaTime;
 
+        // Se player estava na bolha e sair, ela estoura
         if (playerLeft)
         {
             playerLeft = false;
