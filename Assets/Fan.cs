@@ -2,31 +2,45 @@ using UnityEngine;
 
 public class Fan : MonoBehaviour
 {
-    public Vector2 windDirection = Vector2.right; // Wind direction
-    public float windForce = 5f; // Wind strength
-    public bool isActive = true; // Fan state
+    public Vector2 windDirection = Vector2.right; // Dire��o do vento
+    public float windForce = 5f; // Intensidade do vento
+    public bool isActive = true; // Estado do ventilador
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        // Check if the fan is active and the object has the tag "Bubble"
+        // Verifica se o ventilador est� ativo e o objeto tem a tag "Bubble"
         if (isActive && other.CompareTag("Bubble"))
         {
             Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                // Apply force in the specified direction
+                // Aplica for�a na dire��o do vento
                 rb.AddForce(windDirection.normalized * windForce);
             }
         }
     }
 
-    // Optional: Method to toggle the fan state
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        // Quando o objeto sai do vento
+        if (other.CompareTag("Bubble"))
+        {
+            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                // Redefine a velocidade para subir reto (apenas no eixo Y)
+                rb.linearVelocity = new Vector2(0, Mathf.Abs(rb.linearVelocity.y));
+            }
+        }
+    }
+
+    // M�todo para alternar o estado do ventilador
     public void ToggleFan()
     {
         isActive = !isActive;
     }
 
-    // Visualization in the editor
+    // Visualiza��o no editor
     private void OnDrawGizmos()
     {
         Gizmos.color = isActive ? Color.blue : Color.red;
