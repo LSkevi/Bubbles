@@ -1,20 +1,25 @@
 using UnityEngine;
 
-public class FloatingBubble : MonoBehaviour
+public class FloatingBubble : BubbleBase
 {
     public float floatSpeed = 2f; // Velocidade de subida da bolha
     public float additionalJumpForce = 5f; // Força do pulo adicional
     private Transform player; // Referência ao jogador
     private Rigidbody2D playerRb; // Referência ao Rigidbody2D do jogador
-    private bool isCarryingPlayer = false;
+    private bool isEmpty = true;
 
     void Update()
+    {
+        Use();
+    }
+
+    public override void Use()
     {
         // Bolha sobe
         transform.position += Vector3.up * floatSpeed * Time.deltaTime;
 
         // Se estiver carregando o jogador, mova-o junto com a bolha
-        if (isCarryingPlayer && player != null)
+        if (isEmpty && player != null)
         {
             player.position = new Vector3(transform.position.x, transform.position.y, player.position.z);
 
@@ -32,7 +37,7 @@ public class FloatingBubble : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // Inicia o transporte do jogador
-            isCarryingPlayer = true;
+            isEmpty = true;
             player = collision.transform;
             playerRb = collision.GetComponent<Rigidbody2D>();
 
@@ -71,7 +76,7 @@ public class FloatingBubble : MonoBehaviour
     void PopBubble()
     {
         // Estoura a bolha e libera o jogador na posição atual
-        if (isCarryingPlayer && player != null)
+        if (isEmpty && player != null)
         {
             ReleasePlayer();
         }
@@ -91,7 +96,7 @@ public class FloatingBubble : MonoBehaviour
             player.position = new Vector3(transform.position.x, transform.position.y, player.position.z);
         }
 
-        isCarryingPlayer = false;
+        isEmpty = false;
         player = null;
         playerRb = null;
     }
