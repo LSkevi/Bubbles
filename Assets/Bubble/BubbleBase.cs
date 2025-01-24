@@ -6,7 +6,7 @@ public abstract class BubbleBase : MonoBehaviour
     public Rigidbody2D myRb;
     public Transform playerTransform;
 
-    protected List<string> friendlyTag = 
+    protected List<string> friendlyTag =
         new List<string> { "BubblePlatform", "Player", "BouncySurface", "StickySurface", "Wind" };
 
     protected abstract void BubbleLogic();
@@ -31,7 +31,7 @@ public abstract class BubbleBase : MonoBehaviour
 
     protected virtual void ReleasePlayer()
     {
-        if(playerTransform != null) playerTransform.SetParent(null);
+        if (playerTransform != null) playerTransform.SetParent(null);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

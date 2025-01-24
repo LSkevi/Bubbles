@@ -5,8 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Components")]
     public Rigidbody2D rb;
-    public Collider2D bodyCollider;
-    public Collider2D groundCheck;
+    public GameObject groundCheck;
     private float moveInput;
 
     [Header("Ground Movement Settings")]
@@ -22,16 +21,22 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Flags")]
     public bool isGrounded;
-    public bool isFacingRight = true;
+    private bool isFacingRight = true;
+
+    [Header("Audio")]
+    public AudioClip walkAudio;
+    public AudioClip jumpAudio;
 
     private void FixedUpdate()
     {
         Move();
+        IsGrounded();
     }
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.transform.position, 0.2f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.transform.position, 0.2f, groundLayer);
+        return isGrounded;
     }
 
     private void Flip()
@@ -50,16 +55,24 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         var xVelocity = moveInput * moveSpeed;
-        rb.linearVelocity = new Vector2 (xVelocity, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(xVelocity, rb.linearVelocity.y);
 
         if ((isFacingRight && moveInput < -0.1f) || (!isFacingRight && moveInput > 0.1f)) Flip();
+
+        if (isGrounded && Mathf.Abs(moveInput) > 0.1f)
+        {
+            AudioManager.Instance.PlayAudio(walkAudio, true);
+        }
+        else AudioManager.Instance.StopAudio();
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && IsGrounded())
+        if (context.performed && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+            AudioManager.Instance.PlayAudio(jumpAudio);
         }
         if (context.canceled && rb.linearVelocity.y > 0.1f)
         {

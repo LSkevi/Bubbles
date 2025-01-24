@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class VerticalBubble : BubbleBase
 {
-    public float floatSpeed = 2f; // Velocidade de subida da bolha
-    public float additionalJumpForce = 5f; // Força do pulo adicional
+    public float floatSpeed = 1f; // Velocidade de subida da bolha
     private bool playerLeft;
 
     void FixedUpdate() => BubbleLogic();
@@ -12,6 +11,8 @@ public class VerticalBubble : BubbleBase
     {
         var yVelocity = floatSpeed * Time.deltaTime;
         myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, floatSpeed);
+
+        //transform.position += Vector3.up * floatSpeed * Time.deltaTime;
 
         // Se player estava na bolha e sair, ela estoura
         if (playerLeft) PopBubble(false);

@@ -5,8 +5,6 @@ public class ShieldBubble : BubbleBase
     public float fallSpeed = 2f; // Velocidade de queda da bolha
     public float jumpForce = 10f; // Força aplicada ao jogador ao estourar
     public float lifeTime = 5f; // Tempo de vida da bolha antes de desaparecer
-
-    public Rigidbody2D playerRb; // Referência ao Rigidbody2D do jogador
     private bool isActive = false; // Define se a bolha está ativa ao redor do jogador
 
     void Start()
@@ -37,7 +35,7 @@ public class ShieldBubble : BubbleBase
 
     protected override void PopBubble(bool isTimeSensitive = false, float lifeTime = 0)
     {
-        playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
+        //playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
         base.PopBubble(isTimeSensitive, lifeTime);
     }
 }

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class HorizontalBouncingBubble : BubbleBase
 {
-    public Rigidbody2D playerRb;
     public float moveSpeed = 2f; // Velocidade horizontal da bolha
     public float bounceForce = 10f; // Forca do pulo adicional
     private Vector2 moveDirection = Vector2.right; // Dire��o inicial do movimento
@@ -22,7 +21,7 @@ public class HorizontalBouncingBubble : BubbleBase
         // Faz o player quicar
         if (collision.CompareTag("Player"))
         {
-            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
+            //playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
         }
     }
 }
