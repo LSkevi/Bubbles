@@ -195,7 +195,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!58 &8511928465998636427
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -246,7 +246,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRb: {fileID: 4122875616313505128}
   playerTransform: {fileID: 0}
-  playerRb: {fileID: 0}
   moveSpeed: 50
   bounceForce: 7
   moveDirection: 1

@@ -37,19 +37,16 @@ public abstract class BubbleBase : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         // Estoura a bolha se entrar em contato com !friendlyTag
-        if (!friendlyTag.Contains(collision.gameObject.tag)) PopBubble();
-    }
-
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        if (!friendlyTag.Contains(collision.gameObject.tag))
         {
-            if (playerTransform != null) ParentPlayer();
+            Debug.Log(collision.gameObject.tag);
+            PopBubble();
         }
     }
 
-    protected virtual void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player")) PopBubble();
-    }
+    protected virtual void OnTriggerExit2D(Collider2D collision) { }
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision) { }
+
+    protected virtual void OnCollisionExit2D(Collision2D collision) { }
 }

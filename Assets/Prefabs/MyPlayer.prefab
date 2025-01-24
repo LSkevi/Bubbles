@@ -99,11 +99,35 @@ MonoBehaviour:
     m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
     m_ActionName: 'Player/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3814876316535980222}
+        m_TargetAssemblyTypeName: BubbleManager, Assembly-CSharp
+        m_MethodName: ChangeForm
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5a78dfae-df88-4f23-99be-9c956a62448c
     m_ActionName: 'Player/ChangeBubble[/Keyboard/z,/Mouse/leftButton,/XInputControllerWindows/buttonWest]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3814876316535980222}
+        m_TargetAssemblyTypeName: BubbleManager, Assembly-CSharp
+        m_MethodName: SpawnBubble
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 35000aa6-1f65-4c42-889f-77693b1959e5
     m_ActionName: 'Player/ReleaseBubble[/Keyboard/x,/Mouse/rightButton,/XInputControllerWindows/buttonEast]'
   - m_PersistentCalls:
@@ -449,7 +473,7 @@ GameObject:
   - component: {fileID: 254389237736033620}
   m_Layer: 0
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,7 +504,7 @@ GameObject:
   - component: {fileID: 5081318541353629780}
   m_Layer: 0
   m_Name: BubbleSpawnPoint
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -494,7 +518,7 @@ Transform:
   m_GameObject: {fileID: 4278192626832150959}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 0, z: 0}
+  m_LocalPosition: {x: 1.4, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -22,4 +22,17 @@ public class VerticalBubble : BubbleBase
         playerLeft = true;
         base.ReleasePlayer();
     }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (playerTransform != null) ParentPlayer();
+        }
+    }
+
+    protected override void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) PopBubble();
+    }
 }
