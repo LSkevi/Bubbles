@@ -2097,6 +2097,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4122875616313505128, guid: 6d7aee33211cb6d45a60e93aeb9101a5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: f249830a4e16f704eb9c75a57d3d2f3c, type: 2}
     - target: {fileID: 7095170392578195010, guid: 6d7aee33211cb6d45a60e93aeb9101a5, type: 3}
       propertyPath: m_Name
       value: HorizontalBubble

@@ -5,13 +5,12 @@ public class HorizontalBouncingBubble : BubbleBase
     public Rigidbody2D playerRb;
     public float moveSpeed = 2f; // Velocidade horizontal da bolha
     public float bounceForce = 10f; // Forca do pulo adicional
+
     public enum Direction
     {
         Left = -1,
         Right = 1
     }
-
-    // Variável para selecionar a direção via dropdown
     public Direction moveDirection = Direction.Right;
 
     private void FixedUpdate() => BubbleLogic();
@@ -21,7 +20,6 @@ public class HorizontalBouncingBubble : BubbleBase
         // Bolha move na horizontal
         var xVelocity = (float)moveDirection * moveSpeed * Time.deltaTime;
         myRb.linearVelocity = new Vector2(xVelocity, myRb.linearVelocity.y);
-
         //transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
 
