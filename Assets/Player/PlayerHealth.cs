@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
         {
             // Se há uma bolha escudo, ela absorve o dano e estoura
             Debug.Log("ShieldBubble blocking damage!");
-            activeShieldBubble.PopBubble();
+            //activeShieldBubble.PopBubble();
             activeShieldBubble = null; // Remove a referência à bolha
             return;
         }

@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class ShieldBubble : MonoBehaviour
+public class ShieldBubble : BubbleBase
 {
     public float fallSpeed = 2f; // Velocidade de queda da bolha
     public float popForce = 10f; // Força aplicada ao jogador ao estourar
     public float lifeTime = 5f; // Tempo de vida da bolha antes de desaparecer
 
-    private Transform player; // Referência ao jogador
     private Rigidbody2D playerRb; // Referência ao Rigidbody2D do jogador
     private bool isActive = false; // Define se a bolha está ativa ao redor do jogador
 
@@ -16,7 +15,12 @@ public class ShieldBubble : MonoBehaviour
         Destroy(gameObject, lifeTime);
     }
 
-    void Update()
+    private void FixedUpdate()
+    {
+        Use();
+    }
+
+    protected override void Use()
     {
         if (!isActive)
         {
@@ -26,16 +30,7 @@ public class ShieldBubble : MonoBehaviour
         else if (player != null)
         {
             // A bolha segue o jogador quando ativa
-            transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player") && !isActive)
-        {
-            // Ativa a bolha ao redor do jogador
-            ActivateBubble(collision.transform);
+            transform.position = new Vector2(player.position.x, player.position.y);
         }
     }
 
@@ -47,12 +42,10 @@ public class ShieldBubble : MonoBehaviour
         Debug.Log("ShieldBubble activated around player!");
     }
 
-    public void PopBubble()
+    protected override void PopBubble()
     {
         if (playerRb != null)
         {
-            // Dá um impulso vertical ao jogador
-            Debug.Log("ShieldBubble popped! Giving player an upward boost.");
             playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, popForce);
         }
 
