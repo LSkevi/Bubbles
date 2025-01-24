@@ -4,7 +4,6 @@ public class VerticalBubble : BubbleBase
 {
     public float floatSpeed = 2f; // Velocidade de subida da bolha
     public float additionalJumpForce = 5f; // Força do pulo adicional
-    private Rigidbody2D playerRb; // Referência ao Rigidbody2D do jogador
     private bool playerLeft;
 
     void Update()
@@ -14,8 +13,8 @@ public class VerticalBubble : BubbleBase
 
     protected override void BubbleLogic()
     {
-        // Bolha sobe
-        transform.position += Vector3.up * floatSpeed * Time.deltaTime;
+        var yVelocity = floatSpeed * Time.deltaTime;
+        myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, floatSpeed);
 
         // Se player estava na bolha e sair, ela estoura
         if (playerLeft)

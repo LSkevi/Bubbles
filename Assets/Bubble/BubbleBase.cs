@@ -1,8 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BubbleBase : MonoBehaviour
 {
-    public Transform player;
+    public Rigidbody2D myRb;
+    public Transform playerTransform;
+
+    protected List<string> friendlyTag = 
+        new List<string> { "Player", "BouncySurface", "StickySurface" };
 
     protected abstract void BubbleLogic();
 
@@ -21,23 +26,23 @@ public abstract class BubbleBase : MonoBehaviour
 
     protected virtual void ParentPlayer()
     {
-        player.SetParent(transform);
+        playerTransform.SetParent(transform);
     }
 
     protected virtual void ReleasePlayer()
     {
-        player.SetParent(null);
+        playerTransform.SetParent(null);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            if (player != null) ParentPlayer();
+            if (playerTransform != null) ParentPlayer();
         }
 
-        if (!collision.CompareTag("Player") 
-            || !collision.CompareTag("BouncySurface")) PopBubble();
+        // Estoura a bolha se entrar em contato com !friendlyTag
+        if (!friendlyTag.Contains(collision.gameObject.tag)) PopBubble();
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision)

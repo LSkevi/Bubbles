@@ -11,6 +11,7 @@ public class ShieldBubble : BubbleBase
 
     void Start()
     {
+        friendlyTag.Add("Ground");
         // Destroi a bolha após um tempo se ela não for usada
         PopBubble(true, lifeTime);
     }

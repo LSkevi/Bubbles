@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
     public void SetShieldBubble(ShieldBubble shieldBubble)
     {
         activeShieldBubble = shieldBubble;
-        shieldBubble.ActivateBubble(transform);
+        //shieldBubble.ActivateBubble(transform);
     }
 
     private void Die()
