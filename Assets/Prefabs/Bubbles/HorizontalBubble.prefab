@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8933783203009581407}
   m_Layer: 0
   m_Name: HorizontalBubble
-  m_TagString: Untagged
+  m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,7 +185,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f249830a4e16f704eb9c75a57d3d2f3c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -247,6 +247,6 @@ MonoBehaviour:
   myRb: {fileID: 4122875616313505128}
   playerTransform: {fileID: 0}
   playerRb: {fileID: 0}
-  moveSpeed: 0.5
-  bounceForce: 10
+  moveSpeed: 50
+  bounceForce: 7
   moveDirection: 1
