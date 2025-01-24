@@ -7,10 +7,7 @@ public class HorizontalBouncingBubble : BubbleBase
     public float bounceForce = 10f; // Forca do pulo adicional
     private Vector2 moveDirection = Vector2.right; // Dire��o inicial do movimento
 
-    private void Update()
-    {
-        BubbleLogic();
-    }
+    private void FixedUpdate() => BubbleLogic();
 
     protected override void BubbleLogic()
     {

@@ -16,10 +16,7 @@ public class ShieldBubble : BubbleBase
         PopBubble(true, lifeTime);
     }
 
-    private void FixedUpdate()
-    {
-        BubbleLogic();
-    }
+    private void FixedUpdate() => BubbleLogic();
 
     protected override void BubbleLogic()
     {

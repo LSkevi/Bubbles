@@ -7,7 +7,7 @@ public abstract class BubbleBase : MonoBehaviour
     public Transform playerTransform;
 
     protected List<string> friendlyTag = 
-        new List<string> { "Player", "BouncySurface", "StickySurface" };
+        new List<string> { "BubblePlatform", "Player", "BouncySurface", "StickySurface", "Wind" };
 
     protected abstract void BubbleLogic();
 
@@ -31,7 +31,7 @@ public abstract class BubbleBase : MonoBehaviour
 
     protected virtual void ReleasePlayer()
     {
-        playerTransform.SetParent(null);
+        if(playerTransform != null) playerTransform.SetParent(null);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -50,6 +50,6 @@ public abstract class BubbleBase : MonoBehaviour
 
     protected virtual void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) ReleasePlayer();
+        if (collision.gameObject.CompareTag("Player")) PopBubble();
     }
 }
