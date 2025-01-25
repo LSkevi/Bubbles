@@ -1,6 +1,7 @@
+using Assets.Scripts.Interfaces;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDamageable
 {
     public int maxHealth = 3; // Vida máxima do jogador
     private int currentHealth;
@@ -43,5 +44,11 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Player died!");
         // Reinicie a cena ou implemente lógica adicional de morte aqui
+    }
+
+    // Interface IDamageable
+    public void OnTakeDamage(int damage)
+    {
+        TakeDamage(damage);
     }
 }

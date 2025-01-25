@@ -17,6 +17,7 @@ public class ShieldBubble : BubbleBase
         {
             var playerRb = PlayerManager.Instance.PlayerMovement.rb;
 
+            // Depois multiplicar bounceForce por Direction para casos do shiel estoura de cima pra baixo
             if (transform.parent == playerTransform && playerRb != null)
                 playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
 
