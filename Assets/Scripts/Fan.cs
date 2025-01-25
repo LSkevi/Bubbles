@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class Fan : MonoBehaviour
 {
@@ -7,46 +6,34 @@ public class Fan : MonoBehaviour
     public float windSpeed = 5f;
     public bool isActive = true;
 
-    private Dictionary<Rigidbody2D, float> originalSpeeds = new Dictionary<Rigidbody2D, float>();
+    private float originalYVelocity;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isActive && other.CompareTag("Bubble"))
+        if (isActive && collision.CompareTag("Bubble"))
         {
-            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                if (!originalSpeeds.ContainsKey(rb))
-                {
-                    originalSpeeds[rb] = rb.linearVelocity.y;
-                }
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + windSpeed);
-            }
+            Rigidbody2D bubbleRb = collision.GetComponent<Rigidbody2D>();
+            originalYVelocity = bubbleRb.linearVelocity.y;
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (isActive && other.CompareTag("Bubble"))
+        if (isActive && collision.CompareTag("Bubble"))
         {
-            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
+
             if (rb != null)
-            {
                 rb.linearVelocity = new Vector2(0, windSpeed);
-            }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.CompareTag("Bubble"))
+        if (collision.CompareTag("Bubble"))
         {
-            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-            if (rb != null && originalSpeeds.ContainsKey(rb))
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, originalSpeeds[rb]);
-                originalSpeeds.Remove(rb);
-            }
+            var xVelocity = collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity.x;
+            collision.gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(xVelocity, originalYVelocity);
         }
     }
 
