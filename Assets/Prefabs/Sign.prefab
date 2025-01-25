@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signPanel: {fileID: 5931087302090800280}
   signText: {fileID: 2332293327637646063}
-  message: "Aperte espa\xE7o para PULAR"
+  message: 
 --- !u!1 &3963727346182391403
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Informa\xE7\xE3o X te dizendo que \xE9 preciso fazer tal coisa"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

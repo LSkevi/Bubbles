@@ -14,6 +14,7 @@ public class Sign : MonoBehaviour {
 
     public void ShowSign(bool show) {
       signPanel.SetActive(show);
+	  if(show) signText.text = message;
     }
     
     private void OnTriggerEnter2D(Collider2D col) {
