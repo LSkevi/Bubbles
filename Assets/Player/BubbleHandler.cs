@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BubbleManager : MonoBehaviour
+public class BubbleHandler : MonoBehaviour
 {
     private Dictionary<string, GameObject> bubblePrefabs;
 
@@ -62,8 +62,16 @@ public class BubbleManager : MonoBehaviour
         if (context.performed && spawnPoint != null
             && bubblePrefabs.TryGetValue(currentForm, out GameObject bubblePrefab))
         {
-            if (bubblePrefab != null) 
-                Instantiate(bubblePrefab, spawnPoint.position, Quaternion.identity);
+            if (bubblePrefab != null)
+            {
+                // Se nao for shield
+                if(bubblePrefab != shieldBubblePrefab)
+                    Instantiate(bubblePrefab, spawnPoint.position, Quaternion.identity);
+                // Se for shield
+                else Instantiate(bubblePrefab, transform.position, Quaternion.identity);
+
+                Debug.Log($"Invoquei a bolha: {bubblePrefab.name}");
+            }
         }
     }
 

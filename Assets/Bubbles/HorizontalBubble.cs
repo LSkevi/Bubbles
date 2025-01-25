@@ -18,7 +18,6 @@ public class HorizontalBouncingBubble : BubbleBase
         // Bolha move na horizontal
         var xVelocity = moveDirection * moveSpeed * Time.deltaTime;
         myRb.linearVelocity = new Vector2(xVelocity, myRb.linearVelocity.y);
-        //transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
 
     void SetDirection()
