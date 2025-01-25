@@ -62,13 +62,19 @@ public class BubbleHandler : MonoBehaviour
         if (context.performed && spawnPoint != null
             && bubblePrefabs.TryGetValue(currentForm, out GameObject bubblePrefab))
         {
+            // Tenta instanciar uma bolha
             if (bubblePrefab != null)
             {
                 // Se nao for shield
                 if(bubblePrefab != shieldBubblePrefab)
                     Instantiate(bubblePrefab, spawnPoint.position, Quaternion.identity);
+
                 // Se for shield
-                else Instantiate(bubblePrefab, transform.position, Quaternion.identity);
+                else
+                {
+                    var shield = Instantiate(bubblePrefab, transform.position, Quaternion.identity);
+                    shield.transform.SetParent(transform);
+                }
 
                 Debug.Log($"Invoquei a bolha: {bubblePrefab.name}");
             }

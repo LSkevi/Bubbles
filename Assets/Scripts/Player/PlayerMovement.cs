@@ -31,10 +31,14 @@ public class PlayerMovement : MonoBehaviour
     // Eventos
     public event Action OnPlayerJump;
 
+    private void Update()
+    {
+        IsGrounded();
+    }
+
     private void FixedUpdate()
     {
-        Move();
-        IsGrounded();
+        Move();   
     }
 
     private bool IsGrounded()
@@ -83,5 +87,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundCheck.transform.position, 0.2f);
     }
 }
