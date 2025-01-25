@@ -248,4 +248,5 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   moveSpeed: 50
   bounceForce: 7
+  playerMovement: {fileID: 0}
   moveDirection: 1

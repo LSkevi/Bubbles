@@ -39,7 +39,7 @@ public abstract class BubbleBase : MonoBehaviour
         // Estoura a bolha se entrar em contato com !friendlyTag
         if (!friendlyTag.Contains(collision.gameObject.tag))
         {
-            Debug.Log(collision.gameObject.tag);
+            Debug.Log($"Quem me estourou foi: {collision.gameObject.tag}");
             PopBubble();
         }
     }

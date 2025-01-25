@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Components")]
     public Rigidbody2D rb;
     public GameObject groundCheck;
-    private float moveInput;
+    public float moveInput;
 
     [Header("Ground Movement Settings")]
     public LayerMask groundLayer;
@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Flags")]
     public bool isGrounded;
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
 
     [Header("Audio")]
     public AudioClip walkAudio;

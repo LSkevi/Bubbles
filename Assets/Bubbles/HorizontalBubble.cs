@@ -2,24 +2,39 @@ using UnityEngine;
 
 public class HorizontalBouncingBubble : BubbleBase
 {
+    private float moveDirection;
     public float moveSpeed = 2f; // Velocidade horizontal da bolha
     public float bounceForce = 10f; // Forca do pulo adicional
+    public PlayerMovement playerMovement;
 
-    public enum Direction
+    private void Awake()
     {
-        Left = -1,
-        Right = 1
+        SetDirection();
     }
-    public Direction moveDirection = Direction.Right;
 
     private void FixedUpdate() => BubbleLogic();
 
     protected override void BubbleLogic()
     {
         // Bolha move na horizontal
-        var xVelocity = (float)moveDirection * moveSpeed * Time.deltaTime;
+        var xVelocity = moveDirection * moveSpeed * Time.deltaTime;
         myRb.linearVelocity = new Vector2(xVelocity, myRb.linearVelocity.y);
         //transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+    }
+
+    void SetDirection()
+    {
+        if (PlayerManager.Instance != null 
+            && PlayerManager.Instance.PlayerMovement != null)
+        {
+            // Define a direção com base no valor de isFacingRight
+            bool direction = PlayerManager.Instance.PlayerMovement.isFacingRight;
+
+            // Agora, definimos a direção com base no isFacingRight
+            moveDirection = direction ? 1f : -1f;
+
+            Debug.Log($"Move Direction: {moveDirection}");
+        }
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)
