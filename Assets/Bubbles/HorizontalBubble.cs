@@ -24,7 +24,7 @@ public class HorizontalBouncingBubble : BubbleBase
 
     void SetDirection()
     {
-        if (PlayerManager.Instance != null 
+        if (PlayerManager.Instance != null
             && PlayerManager.Instance.PlayerMovement != null)
         {
             // Define a direção com base no valor de isFacingRight
@@ -32,8 +32,6 @@ public class HorizontalBouncingBubble : BubbleBase
 
             // Agora, definimos a direção com base no isFacingRight
             moveDirection = direction ? 1f : -1f;
-
-            Debug.Log($"Move Direction: {moveDirection}");
         }
     }
 
