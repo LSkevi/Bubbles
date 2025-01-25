@@ -11,7 +11,8 @@ public class ShieldBubble : BubbleBase
 
     private void Start()
     {
-        transform.SetParent(PlayerManager.Instance.playerTransform);
+        if (PlayerManager.Instance.playerTransform != null)
+            transform.SetParent(PlayerManager.Instance.playerTransform);
     }
 
     protected override void BubbleLogic() { }
