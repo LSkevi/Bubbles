@@ -9,6 +9,7 @@ namespace Assets.Scripts.Bubbles
         public float xThrowForce = 1f;
         public float yThrowForce = 1f;
 
+        private bool hasExploded;
         public float explosionRadius = 5f;
         public int damage = 1;
 
@@ -47,12 +48,9 @@ namespace Assets.Scripts.Bubbles
 
             foreach (Collider2D collider in colliders)
             {
-                // Verifica se o objeto implementa a interface IBreakable
                 IDamageable breakable = collider.GetComponent<IDamageable>();
-                if (breakable != null)
-                {
-                    breakable.OnTakeDamage(damage); // Chama o método de quebra
-                }
+
+                if (breakable != null) breakable.OnTakeDamage(damage);
             }
 
             Debug.Log("Explosão realizada!");
@@ -60,9 +58,10 @@ namespace Assets.Scripts.Bubbles
 
         protected override void OnCollisionEnter2D(Collision2D collision)
         {
-            if (!friendlyTag.Contains(collision.gameObject.tag))
+            if (!friendlyTag.Contains(collision.gameObject.tag) && !hasExploded)
             {
                 // Instancia a VFX de explosao
+                hasExploded = true;
                 Explode();
 
                 Debug.Log($"Quem me estourou foi: {collision.gameObject.tag}");

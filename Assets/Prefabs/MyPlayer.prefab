@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2181941654488690103}
   - component: {fileID: 6732752822603430164}
   - component: {fileID: 3814876316535980222}
+  - component: {fileID: 4673482574968751768}
   m_Layer: 0
   m_Name: MyPlayer
   m_TagString: Player
@@ -464,6 +465,20 @@ MonoBehaviour:
   explosiveBubblePrefab: {fileID: 4658943101739825276, guid: 9d390457aac793c418c6d0d1039aadcc, type: 3}
   spawnPoint: {fileID: 5081318541353629780}
   spriteRenderer: {fileID: 3432762044147865613}
+--- !u!114 &4673482574968751768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807573660222599526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d73b079e84be2a74b8de28152cbe58ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  isShieldActive: 0
 --- !u!1 &2246402975256888669
 GameObject:
   m_ObjectHideFlags: 0

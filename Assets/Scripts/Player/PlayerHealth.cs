@@ -4,9 +4,8 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
     public int maxHealth = 3; // Vida máxima do jogador
-    private int currentHealth;
-
-    private ShieldBubble activeShieldBubble; // Referência à bolha escudo ativa
+    public int currentHealth;
+    public bool isShieldActive;
 
     void Start()
     {
@@ -15,12 +14,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        if (activeShieldBubble != null)
+        if (isShieldActive)
         {
             // Se há uma bolha escudo, ela absorve o dano e estoura
             Debug.Log("ShieldBubble blocking damage!");
-            //activeShieldBubble.PopBubble();
-            activeShieldBubble = null; // Remove a referência à bolha
             return;
         }
 
@@ -28,16 +25,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         currentHealth -= damage;
         Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
 
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    public void SetShieldBubble(ShieldBubble shieldBubble)
-    {
-        activeShieldBubble = shieldBubble;
-        //shieldBubble.ActivateBubble(transform);
+        if (currentHealth <= 0) Die();
     }
 
     private void Die()
@@ -47,8 +35,5 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     }
 
     // Interface IDamageable
-    public void OnTakeDamage(int damage)
-    {
-        TakeDamage(damage);
-    }
+    public void OnTakeDamage(int damage) => TakeDamage(damage);
 }

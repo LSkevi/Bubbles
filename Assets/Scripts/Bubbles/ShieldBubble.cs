@@ -3,10 +3,16 @@ using UnityEngine;
 public class ShieldBubble : BubbleBase
 {
     public float bounceForce = 10f;
+    private PlayerHealth playerHealth;
 
     private void Awake()
     {
         friendlyTag.Add("Ground");
+    }
+
+    private void Start()
+    {
+        PlayerManager.Instance.PlayerHealth.isShieldActive = true;
     }
 
     protected override void BubbleLogic() { }
@@ -20,6 +26,8 @@ public class ShieldBubble : BubbleBase
             // Depois multiplicar bounceForce por Direction para casos do shiel estoura de cima pra baixo
             if (transform.parent == playerTransform && playerRb != null)
                 playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
+
+            PlayerManager.Instance.PlayerHealth.isShieldActive = true;
 
             Debug.Log($"Quem me estourou foi: {collision.gameObject.tag}");
             PopBubble();

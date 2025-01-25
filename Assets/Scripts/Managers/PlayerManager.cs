@@ -5,6 +5,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get; private set; }
     public Transform playerTransform;
     public PlayerMovement PlayerMovement;
+    public PlayerHealth PlayerHealth;
 
     private void Awake()
     {
