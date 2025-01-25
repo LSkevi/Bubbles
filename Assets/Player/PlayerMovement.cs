@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Audio")]
     public AudioClip walkAudio;
     public AudioClip jumpAudio;
+
+    // Eventos
+    public event Action OnPlayerJump;
 
     private void FixedUpdate()
     {
@@ -71,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            OnPlayerJump?.Invoke();
 
             AudioManager.Instance.PlayAudio(jumpAudio);
         }
