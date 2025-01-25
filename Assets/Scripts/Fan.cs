@@ -1,46 +1,60 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Fan : MonoBehaviour
 {
-    public Vector2 windDirection = Vector2.right; // Dire��o do vento
-    public float windForce = 5f; // Intensidade do vento
-    public bool isActive = true; // Estado do ventilador
+    public Vector2 windDirection = Vector2.up;
+    public float windSpeed = 5f;
+    public bool isActive = true;
 
-    private void OnTriggerStay2D(Collider2D other)
+    private Dictionary<Rigidbody2D, float> originalSpeeds = new Dictionary<Rigidbody2D, float>();
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        // Verifica se o ventilador est� ativo e o objeto tem a tag "Bubble"
         if (isActive && other.CompareTag("Bubble"))
         {
             Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                // Aplica for�a na dire��o do vento
-                rb.AddForce(windDirection.normalized * windForce);
+                if (!originalSpeeds.ContainsKey(rb))
+                {
+                    originalSpeeds[rb] = rb.linearVelocity.y;
+                }
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + windSpeed);
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (isActive && other.CompareTag("Bubble"))
+        {
+            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = new Vector2(0, windSpeed);
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // Quando o objeto sai do vento
         if (other.CompareTag("Bubble"))
         {
             Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (rb != null && originalSpeeds.ContainsKey(rb))
             {
-                // Redefine a velocidade para subir reto (apenas no eixo Y)
-                rb.linearVelocity = new Vector2(0, Mathf.Abs(rb.linearVelocity.y));
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, originalSpeeds[rb]);
+                originalSpeeds.Remove(rb);
             }
         }
     }
 
-    // M�todo para alternar o estado do ventilador
     public void ToggleFan()
     {
         isActive = !isActive;
     }
 
-    // Visualiza��o no editor
     private void OnDrawGizmos()
     {
         Gizmos.color = isActive ? Color.blue : Color.red;
