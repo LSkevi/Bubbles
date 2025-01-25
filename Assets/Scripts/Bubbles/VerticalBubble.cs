@@ -12,12 +12,23 @@ public class VerticalBubble : BubbleBase
 
     protected override void BubbleLogic()
     {
+        if (!isOnWind)
+        {
+            var yVelocity = floatSpeed * Time.fixedDeltaTime;
+            myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, yVelocity);
 
-        var yVelocity =  floatSpeed * Time.fixedDeltaTime;
-        myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, yVelocity);
+            // Verifica se o player está dentro da bolha e se ele executou o pulo
+            if (isPlayerInside && isPlayerJumping) PopBubble();
+        }
 
-        // Verifica se o player está dentro da bolha e se ele executou o pulo
-        if (isPlayerInside && isPlayerJumping) PopBubble();
+        if (isOnWind)
+        {
+            var yVelocity = floatSpeed * Time.fixedDeltaTime;
+            myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, myRb.linearVelocity.y);
+
+            // Verifica se o player está dentro da bolha e se ele executou o pulo
+            if (isPlayerInside && isPlayerJumping) PopBubble();
+        }
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)

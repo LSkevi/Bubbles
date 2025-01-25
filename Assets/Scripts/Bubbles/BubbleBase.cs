@@ -5,6 +5,7 @@ public abstract class BubbleBase : MonoBehaviour
 {
     public Rigidbody2D myRb;
     public Transform playerTransform;
+    public bool isOnWind;
 
     protected List<string> friendlyTag =
         new List<string> { "BubblePlatform", "Player", "BouncySurface", "StickySurface", "Wind" };

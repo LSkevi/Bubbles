@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Movement Settings")]
     public LayerMask groundLayer;
     public float moveSpeed = 5f;
+    public float groundCheckRadius = 0.1f;
     //public float groundAcceleration = 5f;
     //public float groundDeceleration = 5f;
 
@@ -43,7 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.transform.position, 0.2f, groundLayer);
+        isGrounded = 
+            Physics2D.OverlapCircle(groundCheck.transform.position, groundCheckRadius, groundLayer);
         return isGrounded;
     }
 
@@ -92,6 +94,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(groundCheck.transform.position, 0.2f);
+        Gizmos.DrawWireSphere(groundCheck.transform.position, groundCheckRadius);
     }
 }
