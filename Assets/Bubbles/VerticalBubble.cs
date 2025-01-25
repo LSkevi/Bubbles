@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class VerticalBubble : BubbleBase
 {
@@ -14,7 +13,7 @@ public class VerticalBubble : BubbleBase
     protected override void BubbleLogic()
     {
 
-        var yVelocity =  floatSpeed * Time.deltaTime;
+        var yVelocity =  floatSpeed * Time.fixedDeltaTime;
         myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, yVelocity);
 
         // Verifica se o player está dentro da bolha e se ele executou o pulo
