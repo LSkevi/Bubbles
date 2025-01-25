@@ -5,7 +5,6 @@ public class HorizontalBouncingBubble : BubbleBase
     private float moveDirection;
     public float moveSpeed = 2f; // Velocidade horizontal da bolha
     public float bounceForce = 10f; // Forca do pulo adicional
-    public PlayerMovement playerMovement;
 
     private void Awake()
     {
