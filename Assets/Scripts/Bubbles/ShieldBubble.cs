@@ -21,11 +21,10 @@ public class ShieldBubble : BubbleBase
     {
         if (!friendlyTag.Contains(collision.gameObject.tag))
         {
-            var playerRb = PlayerManager.Instance.PlayerMovement.rb;
+            //var playerRb = PlayerManager.Instance.PlayerMovement.rb;
 
-            // Depois multiplicar bounceForce por Direction para casos do shiel estoura de cima pra baixo
-            if (transform.parent == playerTransform && playerRb != null)
-                playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
+            //if (transform.parent == playerTransform && playerRb != null)
+            //    playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
 
             PlayerManager.Instance.PlayerHealth.isShieldActive = true;
 
