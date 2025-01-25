@@ -204,7 +204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRb: {fileID: 3125947257850820934}
   playerTransform: {fileID: 0}
+  isOnWind: 0
   xThrowForce: 10
-  yThrowForce: 5
+  yThrowForce: 5.5
   explosionRadius: 2
   damage: 1

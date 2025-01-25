@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Opcional: mantém o manager entre cenas
+            DontDestroyOnLoad(gameObject);
         }
         else
         {

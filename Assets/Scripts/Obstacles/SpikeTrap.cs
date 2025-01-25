@@ -1,11 +1,15 @@
+using System.Collections;
 using UnityEngine;
 
 public class SpikeTrap : MonoBehaviour
 {
     public int damage = 1;
     public Transform ycomparePoint;
-    public float impulseForce = 7f;
+    public float yImpulseForce = 7f;
     private float impulseDirection;
+
+    public float xMovementDeceleration = 0.5f;
+    public float decelerationDuration = 1f;
 
     private void CalculateDirection(float playerY)
     {
@@ -26,10 +30,8 @@ public class SpikeTrap : MonoBehaviour
             {
                 CalculateDirection(collision.transform.position.y);
 
-                playerRb.linearVelocity =
-                    new Vector2(playerRb.linearVelocity.x, impulseForce * impulseDirection);
-
-                Debug.Log("Bounce!");
+                playerRb.linearVelocity = 
+                    new Vector2(playerRb.linearVelocity.x, yImpulseForce * impulseDirection);
             }
 
             if (playerHealth != null)
