@@ -148,15 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6462d66e61ac241a9035863b6cc113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: 0}
-  bgmAudioSource: {fileID: 0}
-  sfxAudioSource: {fileID: 0}
-  masterSlider: {fileID: 0}
-  bgmSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
-  masterText: {fileID: 0}
-  bgmText: {fileID: 0}
-  sfxText: {fileID: 0}
+  audioSource: {fileID: 763948419}
 --- !u!4 &52954746
 Transform:
   m_ObjectHideFlags: 0
@@ -182,9 +174,9 @@ GameObject:
   m_Component:
   - component: {fileID: 213450482}
   - component: {fileID: 213450481}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Grid
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -620,6 +612,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!82 &763948419 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9118154350111354430, guid: 07c90d9d8fe04a84c9220b1e21bc2d2e, type: 3}
+  m_PrefabInstance: {fileID: 5066560082417525880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1058334587
 GameObject:
   m_ObjectHideFlags: 0
@@ -32735,10 +32732,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MyPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 3814876316535980222, guid: 07c90d9d8fe04a84c9220b1e21bc2d2e, type: 3}
-      propertyPath: shieldBubblePrefab
-      value: 
-      objectReference: {fileID: 1854872497251459131, guid: 71f3bc290f29c1a4db19aaa43e7ab159, type: 3}
     - target: {fileID: 6727762093586593869, guid: 07c90d9d8fe04a84c9220b1e21bc2d2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.7

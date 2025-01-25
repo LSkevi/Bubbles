@@ -70,11 +70,7 @@ public class BubbleHandler : MonoBehaviour
                     Instantiate(bubblePrefab, spawnPoint.position, Quaternion.identity);
 
                 // Se for shield
-                else
-                {
-                    var shield = Instantiate(bubblePrefab, transform.position, Quaternion.identity);
-                    shield.transform.SetParent(transform);
-                }
+                else Instantiate(bubblePrefab, transform.position, Quaternion.identity);
 
                 Debug.Log($"Invoquei a bolha: {bubblePrefab.name}");
             }
