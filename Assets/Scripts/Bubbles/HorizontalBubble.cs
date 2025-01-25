@@ -15,9 +15,17 @@ public class HorizontalBouncingBubble : BubbleBase
 
     protected override void BubbleLogic()
     {
-        // Bolha move na horizontal
-        var xVelocity = moveDirection * moveSpeed * Time.fixedDeltaTime;
-        myRb.linearVelocity = new Vector2(xVelocity, myRb.linearVelocity.y);
+        if (!isOnWind)
+        {
+            var xVelocity = moveDirection * moveSpeed * Time.fixedDeltaTime;
+            myRb.linearVelocity = new Vector2(xVelocity, myRb.linearVelocity.y);
+        }
+
+        if (isOnWind)
+        {
+            var yVelocity = moveSpeed * Time.fixedDeltaTime;
+            myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, myRb.linearVelocity.y);
+        }
     }
 
     void SetDirection()
