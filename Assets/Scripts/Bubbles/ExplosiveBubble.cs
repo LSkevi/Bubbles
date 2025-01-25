@@ -49,28 +49,36 @@ namespace Assets.Scripts.Bubbles
             foreach (Collider2D collider in colliders)
             {
                 IDamageable breakable = collider.GetComponent<IDamageable>();
-
                 if (breakable != null) breakable.OnTakeDamage(damage);
             }
+        }
 
-            Debug.Log("Explosão realizada!");
+        private void Collide()
+        {
+            // Instancia a VFX de explosao
+            hasExploded = true;
+            Explode();
+            PopBubble();
         }
 
         protected override void OnCollisionEnter2D(Collision2D collision)
         {
             if (!friendlyTag.Contains(collision.gameObject.tag) && !hasExploded)
             {
-                // Instancia a VFX de explosao
-                hasExploded = true;
-                Explode();
-
+                Collide();
                 Debug.Log($"Quem me estourou foi: {collision.gameObject.tag}");
-                PopBubble();
             }
         }
 
         // Garantindo que a logica do trigger do bubble base não sera executada
-        protected override void OnTriggerEnter2D(Collider2D collision) { }
+        protected override void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (!friendlyTag.Contains(collision.gameObject.tag) && !hasExploded)
+            {
+                Collide();
+                Debug.Log($"Quem me estourou foi: {collision.gameObject.tag}");
+            }
+        }
 
         // Apenas para debug
         private void OnDrawGizmos()
