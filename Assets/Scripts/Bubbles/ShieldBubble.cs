@@ -7,13 +7,6 @@ public class ShieldBubble : BubbleBase
     private void Awake()
     {
         friendlyTag.Add("Ground");
-        Debug.Log($"Friendly Tags: {string.Join(", ", friendlyTag)}");
-    }
-
-    private void Start()
-    {
-        if (PlayerManager.Instance.playerTransform != null)
-            transform.SetParent(PlayerManager.Instance.playerTransform);
     }
 
     protected override void BubbleLogic() { }
