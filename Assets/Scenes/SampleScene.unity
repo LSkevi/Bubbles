@@ -1073,6 +1073,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &763948416 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6727762093586593869, guid: 07c90d9d8fe04a84c9220b1e21bc2d2e, type: 3}
+  m_PrefabInstance: {fileID: 5066560082417525880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &763948419 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 9118154350111354430, guid: 07c90d9d8fe04a84c9220b1e21bc2d2e, type: 3}
@@ -1247,6 +1252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec0f14d72d17c349b7f72cce0d4788c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 763948416}
   PlayerMovement: {fileID: 2119696143}
 --- !u!1 &1505001779
 GameObject:
@@ -1857,6 +1863,14 @@ PrefabInstance:
     - target: {fileID: 807573660222599526, guid: 07c90d9d8fe04a84c9220b1e21bc2d2e, type: 3}
       propertyPath: m_Name
       value: MyPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814876316535980222, guid: 07c90d9d8fe04a84c9220b1e21bc2d2e, type: 3}
+      propertyPath: shieldBubblePrefab
+      value: 
+      objectReference: {fileID: 1854872497251459131, guid: 71f3bc290f29c1a4db19aaa43e7ab159, type: 3}
+    - target: {fileID: 5081318541353629780, guid: 07c90d9d8fe04a84c9220b1e21bc2d2e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6727762093586593869, guid: 07c90d9d8fe04a84c9220b1e21bc2d2e, type: 3}
       propertyPath: m_LocalPosition.x
