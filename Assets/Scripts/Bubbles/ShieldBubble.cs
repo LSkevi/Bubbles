@@ -22,7 +22,7 @@ public class ShieldBubble : BubbleBase
                 playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
 
             Debug.Log($"Quem me estourou foi: {collision.gameObject.tag}");
-            base.PopBubble();
+            PopBubble();
         }
     }
 }

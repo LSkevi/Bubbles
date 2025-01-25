@@ -6,19 +6,26 @@ namespace Assets.Scripts.Bubbles
     internal class ExplosiveBubble : BubbleBase
     {
         private float moveDirection;
+        public float xThrowForce = 1f;
+        public float yThrowForce = 1f;
+
         public float explosionRadius = 5f;
         public int damage = 1;
 
         private void Awake()
         {
-            friendlyTag.Add("Ground");
             friendlyTag.Remove("Player");
         }
 
-        protected override void BubbleLogic() 
+        private void Start()
         {
-            
+            SetDirection();
+
+            if (myRb != null)
+                myRb.linearVelocity = new Vector2(moveDirection * xThrowForce, yThrowForce);
         }
+
+        protected override void BubbleLogic() { }
 
         void SetDirection()
         {
@@ -63,6 +70,7 @@ namespace Assets.Scripts.Bubbles
             }
         }
 
+        // Garantindo que a logica do trigger do bubble base não sera executada
         protected override void OnTriggerEnter2D(Collider2D collision) { }
 
         // Apenas para debug
