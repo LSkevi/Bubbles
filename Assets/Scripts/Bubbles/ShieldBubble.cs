@@ -7,6 +7,7 @@ public class ShieldBubble : BubbleBase
     private void Awake()
     {
         friendlyTag.Add("Ground");
+        Debug.Log($"Friendly Tags: {string.Join(", ", friendlyTag)}");
     }
 
     private void Start()
@@ -23,7 +24,7 @@ public class ShieldBubble : BubbleBase
         {
             var playerRb = PlayerManager.Instance.PlayerMovement.rb;
 
-            if (playerRb != null)
+            if (transform.parent == playerTransform && playerRb != null)
                 playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
 
             Debug.Log($"Quem me estourou foi: {collision.gameObject.tag}");
