@@ -19,7 +19,7 @@ TagManager:
   - UI
   - Platform
   - Ground
-  - 
+  - Player
   - 
   - 
   - 
@@ -46,6 +46,30 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3463929387
+    locked: 0
+  - name: Clouds
+    uniqueID: 3756751285
+    locked: 0
+  - name: Prop
+    uniqueID: 1875042817
+    locked: 0
+  - name: Itens
+    uniqueID: 4119828449
+    locked: 0
+  - name: Ground
+    uniqueID: 2239508307
+    locked: 0
+  - name: Player
+    uniqueID: 3400967593
+    locked: 0
+  - name: Foreground
+    uniqueID: 1589983133
+    locked: 0
+  - name: Foreground2
+    uniqueID: 206039155
     locked: 0
   m_RenderingLayers:
   - Default
