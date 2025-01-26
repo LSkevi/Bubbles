@@ -169,6 +169,7 @@ MonoBehaviour:
   myRb: {fileID: 6875824040057330792}
   playerTransform: {fileID: 0}
   stuckTime: 5
+  bubbleType: 2
   isOnWind: 0
   isStuck: 0
   floatSpeed: 50

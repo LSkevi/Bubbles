@@ -28,7 +28,7 @@ public class BubbleRepeater : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Verifica se o objeto que colidiu tem a tag "bubble"
-        if (collision.CompareTag("bubble"))
+        if (collision.CompareTag("Bubble"))
         {
             // Obtém o script BubbleBase para acessar o tipo da bolha
             BubbleBase bubble = collision.GetComponent<BubbleBase>();
