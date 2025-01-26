@@ -31,6 +31,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
+        PlayerManager.Instance.CameraSwitch.Shake();
+
         if (isShieldActive)
         {
             Debug.Log("ShieldBubble blocking damage!");
@@ -40,8 +42,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         currentHealth -= damage;
         Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
 
-        if (currentHealth <= 0) Die();
-        else RespawnInCheckPoint();
+        if (currentHealth <= 0)
+        {
+            RespawnInCheckPoint();
+        }
     }
 
     public void AddScore(int points)
@@ -81,11 +85,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public bool HasAmmo()
     {
         return currentAmmo > 0; // Retorna se há munição
-    }
-
-    private void Die()
-    {
-        Debug.Log("Player died!");
     }
 
     public void RespawnInCheckPoint()

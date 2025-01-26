@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerMovement PlayerMovement;
     public JumpFuncion jumpFuncion;
     public PlayerHealth PlayerHealth;
+    public CameraSwitch CameraSwitch;
 
     private void Awake()
     {

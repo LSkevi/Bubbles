@@ -29,8 +29,9 @@ public class SpikeTrap : MonoBehaviour
             {
                 CalculateDirection(collision.transform.position.y);
 
-                playerRb.linearVelocity = 
-                    new Vector2(playerRb.linearVelocity.x, yImpulseForce * impulseDirection);
+                if(!(playerHealth.currentHealth <= 1))
+                    playerRb.linearVelocity = 
+                        new Vector2(playerRb.linearVelocity.x, yImpulseForce * impulseDirection);
             }
 
             if (playerHealth != null)
