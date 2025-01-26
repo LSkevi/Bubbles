@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3125947257850820934}
   - component: {fileID: 6491066360118101546}
   - component: {fileID: 1458440422971385822}
-  - component: {fileID: 8275755051580069887}
   m_Layer: 0
   m_Name: ExplosiveBubble
   m_TagString: Bubble
@@ -176,28 +175,6 @@ MonoBehaviour:
   yThrowForce: 5.5
   explosionRadius: 2
   damage: 1
---- !u!95 &8275755051580069887
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4658943101739825276}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ce27a2bc60f74294b9753b68c1395f3d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6570328655710465552
 GameObject:
   m_ObjectHideFlags: 0
