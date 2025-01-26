@@ -13,6 +13,8 @@ public class VerticalBubble : BubbleBase
 
     protected override void BubbleLogic()
     {
+        SetConstraints();
+
         if (!isOnWind)
         {
             var yVelocity = floatSpeed * Time.fixedDeltaTime;
@@ -28,6 +30,13 @@ public class VerticalBubble : BubbleBase
 
             if (isPlayerInside && isPlayerJumping) PopBubble();
         }
+    }
+
+    void SetConstraints()
+    {
+        if (isOnWind)
+            myRb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
+        else myRb.constraints = RigidbodyConstraints2D.FreezePositionX;
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)

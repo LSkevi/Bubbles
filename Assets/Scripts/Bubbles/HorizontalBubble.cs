@@ -16,6 +16,8 @@ public class HorizontalBouncingBubble : BubbleBase
 
     protected override void BubbleLogic()
     {
+        SetConstraints();
+
         if (!isOnWind)
         {
             var xVelocity = moveDirection * moveSpeed * Time.fixedDeltaTime;
@@ -29,15 +31,19 @@ public class HorizontalBouncingBubble : BubbleBase
         }
     }
 
+    void SetConstraints()
+    {
+        if (isOnWind)
+            myRb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+        else myRb.constraints = RigidbodyConstraints2D.FreezePositionY;
+    }
+
     void SetDirection()
     {
         if (PlayerManager.Instance != null
             && PlayerManager.Instance.PlayerMovement != null)
         {
-            // Define a direção com base no valor de isFacingRight
             bool direction = PlayerManager.Instance.PlayerMovement.isFacingRight;
-
-            // Agora, definimos a direção com base no isFacingRight
             moveDirection = direction ? 1f : -1f;
         }
     }
