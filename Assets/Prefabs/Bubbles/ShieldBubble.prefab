@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3001579456169897195}
   - component: {fileID: 3220890082330619326}
   - component: {fileID: 7911445873233505842}
-  - component: {fileID: 2421548244902508076}
   m_Layer: 0
   m_Name: ShieldBubble
   m_TagString: Bubble
@@ -145,28 +144,6 @@ MonoBehaviour:
   isOnWind: 0
   isStuck: 0
   bounceForce: 7
---- !u!95 &2421548244902508076
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1854872497251459131}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ce27a2bc60f74294b9753b68c1395f3d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3491185932249320197
 GameObject:
   m_ObjectHideFlags: 0
