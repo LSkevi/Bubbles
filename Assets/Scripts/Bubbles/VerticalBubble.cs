@@ -36,7 +36,7 @@ public class VerticalBubble : BubbleBase
     {
         if (isOnWind)
             myRb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
-        else myRb.constraints = RigidbodyConstraints2D.FreezePositionX;
+        else myRb.constraints |= RigidbodyConstraints2D.FreezePositionX;
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)

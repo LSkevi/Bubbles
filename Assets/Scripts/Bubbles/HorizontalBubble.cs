@@ -35,7 +35,7 @@ public class HorizontalBouncingBubble : BubbleBase
     {
         if (isOnWind)
             myRb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
-        else myRb.constraints = RigidbodyConstraints2D.FreezePositionY;
+        else myRb.constraints |= RigidbodyConstraints2D.FreezePositionY;
     }
 
     void SetDirection()
