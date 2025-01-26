@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class BubbleRepeater : MonoBehaviour
 {
-    public GameObject currentBubblePrefab; // Prefab da bolha atual
-    public Transform spawnPoint; // Ponto onde as bolhas serão criadas
-    public float spawnInterval = 10f; // Intervalo entre as bolhas criadas
-    private float spawnTimer; // Temporizador interno
+    public GameObject[] bubblePrefabs; // Lista de prefabs das bolhas disponíveis
+    public Transform spawnPoint;       // Ponto onde as bolhas serão criadas
+    public float spawnInterval = 10f;  // Intervalo entre as bolhas criadas
 
-    private void Update()
+    private GameObject currentBubblePrefab; // O prefab da bolha atual
+    private float spawnTimer;               // Temporizador interno
+
+    void Update()
     {
         // Se há uma bolha configurada, iniciar o temporizador
         if (currentBubblePrefab != null)
@@ -26,16 +28,39 @@ public class BubbleRepeater : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Verifica se o objeto que colidiu tem a tag "bubble"
-        if (collision.CompareTag("Bubble"))
+        if (collision.CompareTag("bubble"))
         {
-            // Atualiza o prefab da bolha com o que encostou
-            currentBubblePrefab = collision.gameObject;
+            // Obtém o script BubbleBase para acessar o tipo da bolha
+            BubbleBase bubble = collision.GetComponent<BubbleBase>();
+            if (bubble != null)
+            {
+                // Procura o prefab correspondente pelo tipo da bolha
+                currentBubblePrefab = GetPrefabByType(bubble.bubbleType);
 
-            // Opcional: Reinicie o temporizador ao mudar de bolha
-            spawnTimer = 0f;
-
-            Debug.Log($"Bubble type updated to: {currentBubblePrefab.name}");
+                if (currentBubblePrefab != null)
+                {
+                    Debug.Log($"Bubble type updated to: {bubble.bubbleType}");
+                }
+                else
+                {
+                    Debug.LogWarning($"No prefab found for bubble type: {bubble.bubbleType}");
+                }
+            }
         }
+    }
+
+    private GameObject GetPrefabByType(int bubbleType)
+    {
+        // Procura pelo prefab correspondente na lista de prefabs
+        foreach (GameObject prefab in bubblePrefabs)
+        {
+            BubbleBase prefabBubble = prefab.GetComponent<BubbleBase>();
+            if (prefabBubble != null && prefabBubble.bubbleType == bubbleType)
+            {
+                return prefab;
+            }
+        }
+        return null; // Retorna null se nenhum prefab correspondente for encontrado
     }
 
     private void SpawnBubble()

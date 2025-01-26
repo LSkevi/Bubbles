@@ -7,6 +7,7 @@ public abstract class BubbleBase : MonoBehaviour
     public Rigidbody2D myRb;
     public Transform playerTransform;
     public float stuckTime = 5f;
+    public int bubbleType;
 
     [Header("Flags")]
     public bool isOnWind;
