@@ -566,15 +566,17 @@ MonoBehaviour:
   moveInput: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   moveSpeed: 5
   groundCheckRadius: 0.1
   jumpForce: 10
   fallMultiplier: 1.5
   isGrounded: 0
   isFacingRight: 1
-  walkAudio: {fileID: 8300000, guid: bdb49257b73be764a8c04e4f37302e0e, type: 3}
-  jumpAudio: {fileID: 8300000, guid: 3318e557ea5714340abb5376ce7fb8c6, type: 3}
+  walkAudio:
+  - {fileID: 8300000, guid: 0970502672c6e444290acc076cf8a0d5, type: 3}
+  - {fileID: 8300000, guid: 089fcfd8b38444c4fa7035082c7b2b67, type: 3}
+  jumpAudio: {fileID: 8300000, guid: 120740aca99d7e44ca339d2ecbf8020d, type: 3}
 --- !u!114 &1314260082748388311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,6 +597,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1702478071997969859}
   bubbleSpawnCooldown: 1.25
   canSpawnBubble: 1
+  swapColorAudio: {fileID: 8300000, guid: 330a0bb1eacbb8c438c6642d46145c8f, type: 3}
 --- !u!114 &2163491299681241125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,6 +616,8 @@ MonoBehaviour:
   spawnPoint: {x: 0, y: 0}
   score: 0
   pointsForExtraLife: 100
+  maxAmmo: 7
+  currentAmmo: 7
 --- !u!1 &5252027478310655563
 GameObject:
   m_ObjectHideFlags: 0

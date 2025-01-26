@@ -12,6 +12,8 @@ public abstract class BubbleBase : MonoBehaviour
     public bool isOnWind;
     public bool isStuck;
 
+    public AudioClip popBubbleSound;
+
     protected List<string> friendlyTag =
         new List<string> { "CameraBounds", "BubblePlatform", "Player", "BouncySurface", "StickySurface", "Wind" };
 
@@ -19,6 +21,7 @@ public abstract class BubbleBase : MonoBehaviour
 
     protected virtual void PopBubble(bool isTimeSensitive = false, float lifeTime = 0)
     {
+        AudioManager.Instance.PlaySFX(popBubbleSound);
         if (!isStuck)
         {
             ReleasePlayer();

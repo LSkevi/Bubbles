@@ -23,6 +23,7 @@ public class BubbleHandler : MonoBehaviour
     public bool canSpawnBubble = true;
 
     private PlayerHealth playerHealth;
+    public AudioClip swapColorAudio;
 
     private void Awake()
     {
@@ -63,6 +64,7 @@ public class BubbleHandler : MonoBehaviour
             int currentIndex = System.Array.IndexOf(forms, currentForm);
             currentForm = forms[(currentIndex + 1) % forms.Length];
             UpdateSpriteColor();
+            AudioManager.Instance.PlaySFX(swapColorAudio);
         }
     }
 
