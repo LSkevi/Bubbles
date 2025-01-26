@@ -9,6 +9,7 @@ public class PlayerUIUpdater : MonoBehaviour
 
     private void Update() {
         lifeText.text = PlayerHealth.Instance.currentHealth + "x";
+        bubbleText.text = PlayerHealth.Instance.currentAmmo + "x";
         scoreText.text = PlayerHealth.Instance.score + "x";
     }
 }
