@@ -113,9 +113,9 @@ MonoBehaviour:
   isOnWind: 0
   isStuck: 0
   popBubbleSound: {fileID: 8300000, guid: 1314c46ae07123a4cb50a2019c3277b5, type: 3}
-  xThrowForce: 1
-  yThrowForce: 1
-  explosionRadius: 5
+  xThrowForce: 10
+  yThrowForce: 5.5
+  explosionRadius: 2
   damage: 1
 --- !u!50 &4119702458088657925 stripped
 Rigidbody2D:
