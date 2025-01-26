@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isFacingRight = true;
 
     [Header("Audio")]
-    public AudioClip walkAudio;
+    public AudioClip[] walkAudio;
     public AudioClip jumpAudio;
 
     //[Header("States")]
@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         IsGrounded();
         anim.SetBool("IsGrounded", IsGrounded());
+        anim.SetBool("Moving", rb.linearVelocityX != 0);
         anim.SetFloat("HorizontalDirection", moveInput);
         anim.SetFloat("VerticalVelocity", rb.linearVelocityY);
         //UpdateState(currentState);
@@ -91,7 +92,6 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetTrigger("Jump");
             OnPlayerJump?.Invoke();
-            AudioManager.Instance.PlaySFX(jumpAudio);
         }
     }
 

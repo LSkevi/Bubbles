@@ -8,6 +8,7 @@ public class VerticalBubble : BubbleBase
     private bool isPlayerJumping;
 
     private PlayerMovement playerMovement; // Referência para o PlayerMovement
+    private JumpFuncion jumpFuncion;
 
     void FixedUpdate() => BubbleLogic();
 
@@ -57,7 +58,8 @@ public class VerticalBubble : BubbleBase
                 }
 
                 // Associa o evento de pulo para ser chamado quando o player pular
-                playerMovement.OnPlayerJump += HandlePlayerJump;
+                if(jumpFuncion != null)
+                    PlayerManager.Instance.jumpFuncion.OnPlayerJump += HandlePlayerJump;
             }
         }
     }
@@ -73,7 +75,8 @@ public class VerticalBubble : BubbleBase
                 if (isPlayerJumping) isPlayerJumping = false;
 
                 // Desassociando o evento ao sair da colisão
-                if (playerMovement != null) playerMovement.OnPlayerJump -= HandlePlayerJump;
+                if (jumpFuncion != null) 
+                    PlayerManager.Instance.jumpFuncion.OnPlayerJump -= HandlePlayerJump;
             }
         }
     }
