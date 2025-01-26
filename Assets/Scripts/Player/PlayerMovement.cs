@@ -4,22 +4,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region Movoment
     [Header("Components")]
     public Rigidbody2D rb;
+    public Animator animator;
     public GameObject groundCheck;
+    [HideInInspector]
     public float moveInput;
 
     [Header("Ground Movement Settings")]
     public LayerMask groundLayer;
     public float moveSpeed = 5f;
     public float groundCheckRadius = 0.1f;
-    //public float groundAcceleration = 5f;
-    //public float groundDeceleration = 5f;
 
     [Header("Air Movement Settings")]
     public float jumpForce = 10f;
-    //public float airAcceleration = 5f;
-    //public float airDeceleration = 5f;
+    public float fallMultiplier = 1.5f;
 
     [Header("Flags")]
     public bool isGrounded;
@@ -29,17 +29,22 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip walkAudio;
     public AudioClip jumpAudio;
 
+    [Header("States")]
+    public MoveStates currentState;
+
     // Eventos
     public event Action OnPlayerJump;
 
     private void Update()
     {
         IsGrounded();
+        UpdateState(currentState);
+        HandleStateTransitions();
     }
 
     private void FixedUpdate()
     {
-        Move();   
+        Move();
     }
 
     private bool IsGrounded()
@@ -69,11 +74,11 @@ public class PlayerMovement : MonoBehaviour
 
         if ((isFacingRight && moveInput < -0.1f) || (!isFacingRight && moveInput > 0.1f)) Flip();
 
-        if (isGrounded && Mathf.Abs(moveInput) > 0.1f)
-        {
-            AudioManager.Instance.PlayAudio(walkAudio, true);
-        }
-        else AudioManager.Instance.StopAudio();
+        //if (isGrounded && Mathf.Abs(moveInput) > 0.1f)
+        //{
+        //    AudioManager.Instance.PlayAudio(walkAudio, true);
+        //}
+        //else AudioManager.Instance.StopAudio();
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -83,11 +88,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             OnPlayerJump?.Invoke();
 
-            AudioManager.Instance.PlayAudio(jumpAudio);
-        }
-        if (context.canceled && rb.linearVelocity.y > 0.1f)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+            //AudioManager.Instance.PlayAudio(jumpAudio);
         }
     }
 
@@ -96,4 +97,96 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.transform.position, groundCheckRadius);
     }
+    #endregion
+
+    #region Animations
+    public enum MoveStates
+    {
+        IdleRight,
+        IdleLeft,
+        WalkRight,
+        WalkLeft,
+        Jump,
+        Fall,
+        LandingLeft,
+        LandingRight
+    }
+
+    private void UpdateState(MoveStates newState)
+    {
+        if (currentState == newState) return;
+
+        currentState = newState;
+
+        switch (currentState)
+        {
+            case MoveStates.IdleRight:
+                animator.Play("idle_r");
+                break;
+
+            case MoveStates.IdleLeft:
+                animator.Play("idle_l");
+                break;
+
+            case MoveStates.WalkRight:
+                animator.Play("walk_r");
+                break;
+
+            case MoveStates.WalkLeft:
+                animator.Play("walk_l");
+                break;
+
+            case MoveStates.Jump:
+                animator.Play("jump");
+                break;
+
+            case MoveStates.Fall:
+                animator.Play("fall");
+                break;
+
+            case MoveStates.LandingRight:
+                animator.Play("landing_r");
+                break;
+
+            case MoveStates.LandingLeft:
+                animator.Play("landing_l");
+                break;
+        }
+    }
+
+    private void HandleStateTransitions()
+    {
+        // Idle e Walk
+        if (isGrounded && Mathf.Abs(rb.linearVelocity.y) < 0.1f)
+        {
+            if (moveInput == 0)
+            {
+                currentState = isFacingRight ? MoveStates.IdleRight : MoveStates.IdleLeft;
+            }
+            else
+            {
+                currentState = isFacingRight ? MoveStates.WalkRight : MoveStates.WalkLeft;
+            }
+        }
+
+        // Jump
+        if (!isGrounded)
+        {
+            currentState = MoveStates.Jump;
+            return;
+        }
+        else if(!isGrounded && rb.linearVelocity.y < 0f)
+        {
+            currentState = MoveStates.Fall;
+            return;
+        }
+
+        // Landing
+        if (isGrounded && currentState == MoveStates.Jump)
+        {
+            currentState = isFacingRight ? MoveStates.LandingRight : MoveStates.LandingLeft;
+            return;
+        }
+    }
+    #endregion
 }
