@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class VerticalBubble : BubbleBase
 {
+    [Header("Own Variables")]
     public float floatSpeed = 1f; // Velocidade de subida da bolha
     private bool isPlayerInside;
     private bool isPlayerJumping;
@@ -17,7 +18,6 @@ public class VerticalBubble : BubbleBase
             var yVelocity = floatSpeed * Time.fixedDeltaTime;
             myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, yVelocity);
 
-            // Verifica se o player está dentro da bolha e se ele executou o pulo
             if (isPlayerInside && isPlayerJumping) PopBubble();
         }
 
@@ -26,7 +26,6 @@ public class VerticalBubble : BubbleBase
             var yVelocity = floatSpeed * Time.fixedDeltaTime;
             myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, myRb.linearVelocity.y);
 
-            // Verifica se o player está dentro da bolha e se ele executou o pulo
             if (isPlayerInside && isPlayerJumping) PopBubble();
         }
     }

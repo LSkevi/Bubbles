@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class HorizontalBouncingBubble : BubbleBase
 {
+    [Header("Own Variables")]
     private float moveDirection;
     public float moveSpeed = 2f; // Velocidade horizontal da bolha
     public float bounceForce = 10f; // Forca do pulo adicional

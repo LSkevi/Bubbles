@@ -168,6 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRb: {fileID: 6875824040057330792}
   playerTransform: {fileID: 0}
+  stuckTime: 5
+  isOnWind: 0
+  isStuck: 0
   floatSpeed: 50
 --- !u!1 &9099373832913848065
 GameObject:

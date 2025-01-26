@@ -5,6 +5,7 @@ namespace Assets.Scripts.Bubbles
 {
     internal class ExplosiveBubble : BubbleBase
     {
+        [Header("Own Variables")]
         private float moveDirection;
         public float xThrowForce = 1f;
         public float yThrowForce = 1f;
@@ -58,16 +59,8 @@ namespace Assets.Scripts.Bubbles
             // Instancia a VFX de explosao
             hasExploded = true;
             Explode();
+            isStuck = false;
             PopBubble();
-        }
-
-        protected override void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (!friendlyTag.Contains(collision.gameObject.tag) && !hasExploded)
-            {
-                Collide();
-                Debug.Log($"Quem me estourou foi: {collision.gameObject.tag}");
-            }
         }
 
         // Garantindo que a logica do trigger do bubble base não sera executada
@@ -78,6 +71,9 @@ namespace Assets.Scripts.Bubbles
                 Collide();
                 Debug.Log($"Quem me estourou foi: {collision.gameObject.tag}");
             }
+
+            if (collision.gameObject.CompareTag("StickySurface"))
+                StuckBubble(collision.transform);
         }
 
         // Apenas para debug

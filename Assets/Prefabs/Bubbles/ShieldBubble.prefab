@@ -139,4 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRb: {fileID: 0}
   playerTransform: {fileID: 0}
+  stuckTime: 5
+  isOnWind: 0
+  isStuck: 0
   bounceForce: 7
