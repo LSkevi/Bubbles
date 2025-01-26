@@ -1863,6 +1863,7 @@ MonoBehaviour:
   masterText: {fileID: 4209767506725625113}
   bgmText: {fileID: 5011400378070841235}
   sfxText: {fileID: 7325800548921784189}
+  settingsPanel: {fileID: 4854882843934251780}
 --- !u!1 &7475619769921177737
 GameObject:
   m_ObjectHideFlags: 0

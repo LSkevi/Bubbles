@@ -6,16 +6,23 @@ using UnityEngine.UI;
 public class AudioManager : MonoBehaviour {
     public static AudioManager Instance;
 
-    [Header("Components")]
+    [Header("Audio Mixers")]
     public AudioMixer mixer;
     public AudioSource bgmAudioSource;
     public AudioSource sfxAudioSource;
+
+    [Header("Sliders")]
     public Slider masterSlider;
     public Slider bgmSlider;
     public Slider sfxSlider;
+
+    [Header("Texts")]
     public TextMeshProUGUI masterText;
     public TextMeshProUGUI bgmText;
     public TextMeshProUGUI sfxText;
+
+    [Header("Window")]
+    public GameObject settingsPanel;
 
     private void Awake() {
         // Garante que apenas um AudioManager exista no jogo
@@ -79,4 +86,13 @@ public class AudioManager : MonoBehaviour {
         sfxSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("SFX Volume"));
         ChangeSFXVolume(sfxSlider.value);
     }
+
+    public void OpenAudioSettings() {
+        settingsPanel.SetActive(true);
+    }
+
+    public void CloseAudioSettings() {
+        settingsPanel.SetActive(false);
+    }
+
 }
