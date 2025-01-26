@@ -103,6 +103,8 @@ public class BubbleHandler : MonoBehaviour
     {
         if (spriteRenderer == null) return;
 
+        string hexColor = "#FFABAA";
+
         // Define as cores com base no nome da forma
         switch (currentForm)
         {
@@ -116,7 +118,9 @@ public class BubbleHandler : MonoBehaviour
                 spriteRenderer.color = Color.green;
                 break;
             case "Explosive":
-                spriteRenderer.color = Color.red;
+                spriteRenderer.color = ColorUtility.TryParseHtmlString(hexColor, out Color color)
+                    ? color
+                    : spriteRenderer.color; // Mantém a cor anterior se falhar
                 break;
         }
     }
