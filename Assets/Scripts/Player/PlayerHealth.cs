@@ -3,14 +3,20 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
+    [Header("Health Settings")]
     public static PlayerHealth Instance;
     public int maxHealth = 3; // Vida máxima do jogador
     public int currentHealth;
     public bool isShieldActive;
     public Vector2 spawnPoint;
 
-    public int score = 0; // Pontuação do jogador
-    public int pointsForExtraLife = 100; // Pontos necessários para ganhar uma vida
+    [Header("Score Settings")]
+    public int score = 0;
+    public int pointsForExtraLife = 100;
+
+    [Header("Ammo Settings")]
+    public int maxAmmo = 7; // Máximo de munição
+    public int currentAmmo = 7; // Munição inicial
 
     private void Awake() {
         Instance = this;
@@ -20,18 +26,17 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         if (spawnPoint == Vector2.zero) spawnPoint = transform.position;
         currentHealth = maxHealth; // Começa com a vida cheia
+        currentAmmo = maxAmmo; // Começa com munição cheia
     }
 
     public void TakeDamage(int damage)
     {
         if (isShieldActive)
         {
-            // Se há uma bolha escudo, ela absorve o dano e estoura
             Debug.Log("ShieldBubble blocking damage!");
             return;
         }
 
-        // Aplica dano ao jogador se não houver bolha
         currentHealth -= damage;
         Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
 
@@ -41,14 +46,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void AddScore(int points)
     {
-        score += points; // Adiciona pontos
+        score += points;
         Debug.Log($"Score: {score}");
 
-        // Verifica se o jogador ganhou uma vida
         while (score >= pointsForExtraLife)
         {
             GainExtraLife();
-            score -= pointsForExtraLife; // Subtrai os pontos usados para ganhar a vida
+            score -= pointsForExtraLife;
         }
     }
 
@@ -65,17 +69,36 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
     }
 
+    public void UseAmmo()
+    {
+        if (currentAmmo > 0)
+        {
+            currentAmmo--; // Consome uma unidade de munição
+            Debug.Log($"Ammo used. Remaining ammo: {currentAmmo}");
+        }
+    }
+
+    public bool HasAmmo()
+    {
+        return currentAmmo > 0; // Retorna se há munição
+    }
+
     private void Die()
     {
         Debug.Log("Player died!");
-        // Reinicie a cena ou implemente lógica adicional de morte aqui
     }
 
-    // Interface IDamageable
-    public void OnTakeDamage(int damage) => TakeDamage(damage);
-
-    public void RespawnInCheckPoint() {
+    public void RespawnInCheckPoint()
+    {
         if (spawnPoint == null) return;
         else transform.position = spawnPoint;
+    }
+
+    public void OnTakeDamage(int damage) => TakeDamage(damage);
+
+    public void ReloadAmmo()
+    {
+        currentAmmo = maxAmmo;
+        Debug.Log("Ammo reloaded!");
     }
 }

@@ -22,10 +22,17 @@ public class BubbleHandler : MonoBehaviour
     public float bubbleSpawnCooldown = 1.25f;
     public bool canSpawnBubble = true;
 
+    private PlayerHealth playerHealth;
+
     private void Awake()
     {
         InitializeDictionary();
         SetInitialForm("Vertical");
+    }
+
+    private void Start()
+    {
+        playerHealth = GetComponent<PlayerHealth>(); // Obtém o script PlayerHealth
     }
 
     private void InitializeDictionary()
@@ -44,7 +51,7 @@ public class BubbleHandler : MonoBehaviour
         if (bubblePrefabs.ContainsKey(form))
         {
             currentForm = form;
-            UpdateSpriteColor(); // Atualiza a cor com base na forma inicial
+            UpdateSpriteColor();
         }
     }
 
@@ -52,23 +59,27 @@ public class BubbleHandler : MonoBehaviour
     {
         if (context.performed)
         {
-            // Array com as formas
             string[] forms = new string[] { "Vertical", "Horizontal", "Shield", "Explosive" };
-
-            // Pega o índice atual e calcula o próximo de forma cíclica
             int currentIndex = System.Array.IndexOf(forms, currentForm);
             currentForm = forms[(currentIndex + 1) % forms.Length];
-
             UpdateSpriteColor();
         }
     }
 
     public void SpawnBubble(InputAction.CallbackContext context)
     {
-        if (context.performed && spawnPoint != null && canSpawnBubble
-            && bubblePrefabs.TryGetValue(currentForm, out GameObject bubblePrefab))
+        if (context.performed && spawnPoint != null && canSpawnBubble &&
+            bubblePrefabs.TryGetValue(currentForm, out GameObject bubblePrefab))
         {
-            StartCoroutine(HandleBubbleSpawn(bubblePrefab));
+            if (playerHealth.HasAmmo())
+            {
+                StartCoroutine(HandleBubbleSpawn(bubblePrefab));
+                playerHealth.UseAmmo(); // Consome munição
+            }
+            else
+            {
+                Debug.Log("No ammo left to spawn a bubble!");
+            }
         }
     }
 
@@ -76,14 +87,10 @@ public class BubbleHandler : MonoBehaviour
     {
         canSpawnBubble = false;
 
-        // Instancia a bolha
         if (bubblePrefab != null)
         {
-            // Se nao eh shield
             if (bubblePrefab != shieldBubblePrefab)
                 Instantiate(bubblePrefab, spawnPoint.position, Quaternion.identity);
-
-            // Se eh shield
             else
             {
                 var shield = Instantiate(bubblePrefab, transform.position, Quaternion.identity);
@@ -91,13 +98,10 @@ public class BubbleHandler : MonoBehaviour
             }
         }
 
-        // Aguarda o cooldown
         yield return new WaitForSeconds(bubbleSpawnCooldown);
 
-        // Libera o spawn e reativa o movimento
         canSpawnBubble = true;
     }
-
 
     private void UpdateSpriteColor()
     {
@@ -105,7 +109,6 @@ public class BubbleHandler : MonoBehaviour
 
         string hexColor = "#FFABAA";
 
-        // Define as cores com base no nome da forma
         switch (currentForm)
         {
             case "Vertical":
@@ -120,7 +123,7 @@ public class BubbleHandler : MonoBehaviour
             case "Explosive":
                 spriteRenderer.color = ColorUtility.TryParseHtmlString(hexColor, out Color color)
                     ? color
-                    : spriteRenderer.color; // Mantém a cor anterior se falhar
+                    : spriteRenderer.color;
                 break;
         }
     }
