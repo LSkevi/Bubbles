@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2485141330461900094}
   - component: {fileID: 1702478071997969859}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player_Sprite_In
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8829997520114756514}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 1838886384611388978}
   - component: {fileID: 5820360233250314387}
   - component: {fileID: 5273699156836184314}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 8219712149158760084}
   - component: {fileID: 1314260082748388311}
   - component: {fileID: 2163491299681241125}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -590,9 +590,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalBubblePrefab: {fileID: 5573930626286257175, guid: 630b4dcebbc34da468d2c6f04028315e, type: 3}
-  horizontalBubblePrefab: {fileID: 7095170392578195010, guid: 6d7aee33211cb6d45a60e93aeb9101a5, type: 3}
-  shieldBubblePrefab: {fileID: 1854872497251459131, guid: 71f3bc290f29c1a4db19aaa43e7ab159, type: 3}
-  explosiveBubblePrefab: {fileID: 4658943101739825276, guid: 9d390457aac793c418c6d0d1039aadcc, type: 3}
+  horizontalBubblePrefab: {fileID: 7731466999708181397, guid: 3838ae9cdca26ce4ca9ad6f94d934949, type: 3}
+  shieldBubblePrefab: {fileID: 894443045972322465, guid: c0e84f0c14ccea5448100a2c2c46604d, type: 3}
+  explosiveBubblePrefab: {fileID: 3106743056337882234, guid: 661e1922933674343895632d6f7bdff4, type: 3}
   spawnPoint: {fileID: 7084497543159042613}
   spriteRenderer: {fileID: 1702478071997969859}
   bubbleSpawnCooldown: 1.25
@@ -628,7 +628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6324460540770101090}
   - component: {fileID: 6761779897484903411}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player_Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,7 +715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4423665893642535838}
   - component: {fileID: 3567965796761955713}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player_Sprites_out
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -801,7 +801,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7084497543159042613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BubbleSpawnPoint
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -817,7 +817,7 @@ Transform:
   m_GameObject: {fileID: 7099360334151148774}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0.75, z: 0}
+  m_LocalPosition: {x: 1.81, y: 1.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,7 +832,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3624880926792161959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BubbleSpawnFlip
   m_TagString: Untagged
   m_Icon: {fileID: 0}

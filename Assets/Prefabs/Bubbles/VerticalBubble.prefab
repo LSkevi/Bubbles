@@ -116,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 5573930626286257175}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.77, y: -0.228, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.15, y: 2.15, z: 2.15}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -187,7 +187,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.35
 --- !u!114 &6291922113698263306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   isOnWind: 0
   isStuck: 0
   popBubbleSound: {fileID: 8300000, guid: 1314c46ae07123a4cb50a2019c3277b5, type: 3}
-  floatSpeed: 1
+  floatSpeed: 50
 --- !u!95 &6526450604686371056
 Animator:
   serializedVersion: 7
