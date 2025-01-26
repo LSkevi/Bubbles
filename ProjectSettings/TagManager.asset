@@ -10,6 +10,7 @@ TagManager:
   - BubblePlartform
   - Wind
   - StickySurface
+  - CameraBounds
   layers:
   - Default
   - TransparentFX
