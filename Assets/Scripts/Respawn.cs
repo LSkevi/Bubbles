@@ -5,7 +5,7 @@ public class Respawn : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D col) {
         if(col.tag == "Player") {
-            //pegar script do player, passar spawnPoint como spawnPoint
+            col.GetComponent<PlayerHealth>().spawnPoint = spawnPoint.position;
         }
     }
 }

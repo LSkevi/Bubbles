@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
     [Header("Components")]
     public Rigidbody2D rb;
     public GameObject groundCheck;
+    public Animator anim;
     public float moveInput;
 
     [Header("Ground Movement Settings")]
@@ -35,11 +35,14 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         IsGrounded();
+        anim.SetBool("IsGrounded", IsGrounded());
+        anim.SetFloat("Direction", moveInput);
+        anim.SetFloat("VerticalVelocity", rb.linearVelocityY);
     }
 
     private void FixedUpdate()
     {
-        Move();   
+        Move();
     }
 
     private bool IsGrounded()
@@ -52,9 +55,9 @@ public class PlayerMovement : MonoBehaviour
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
+        //Vector3 scale = transform.localScale;
+        //scale.x *= -1;
+        //transform.localScale = scale;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -80,16 +83,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            anim.SetTrigger("Jump");
+            //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             OnPlayerJump?.Invoke();
 
-            AudioManager.Instance.PlayAudio(jumpAudio);
+            //AudioManager.Instance.PlaySFX(jumpAudio);
         }
         if (context.canceled && rb.linearVelocity.y > 0.1f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
     }
+
 
     private void OnDrawGizmos()
     {
