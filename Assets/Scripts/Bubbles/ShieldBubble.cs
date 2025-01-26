@@ -3,7 +3,6 @@ using UnityEngine;
 public class ShieldBubble : BubbleBase
 {
     public float bounceForce = 10f;
-    private PlayerHealth playerHealth;
 
     private void Awake()
     {
@@ -21,11 +20,6 @@ public class ShieldBubble : BubbleBase
     {
         if (!friendlyTag.Contains(collision.gameObject.tag))
         {
-            //var playerRb = PlayerManager.Instance.PlayerMovement.rb;
-
-            //if (transform.parent == playerTransform && playerRb != null)
-            //    playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
-
             PlayerManager.Instance.PlayerHealth.isShieldActive = true;
 
             Debug.Log($"Quem me estourou foi: {collision.gameObject.tag}");

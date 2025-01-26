@@ -40,10 +40,10 @@ public class BubbleHandler : MonoBehaviour
     {
         bubblePrefabs = new Dictionary<string, GameObject>
         {
-            { "Vertical"    ,   verticalBubblePrefab },
-            { "Horizontal"  ,   horizontalBubblePrefab },
-            { "Shield"      ,   shieldBubblePrefab },
-            { "Explosive"   ,   explosiveBubblePrefab }
+            { "Vertical"    ,   verticalBubblePrefab    },
+            { "Horizontal"  ,   horizontalBubblePrefab  },
+            { "Shield"      ,   shieldBubblePrefab      },
+            { "Explosive"   ,   explosiveBubblePrefab   }
         };
     }
 

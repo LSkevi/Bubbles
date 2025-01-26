@@ -142056,7 +142056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1089920812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148705,6 +148705,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1314260082748388311, guid: fd7161ab8eae90e41972d650752ccf8e, type: 3}
+      propertyPath: shieldBubblePrefab
+      value: 
+      objectReference: {fileID: 1854872497251459131, guid: 71f3bc290f29c1a4db19aaa43e7ab159, type: 3}
     - target: {fileID: 2202548739267087153, guid: fd7161ab8eae90e41972d650752ccf8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.06
