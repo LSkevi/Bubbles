@@ -13,7 +13,7 @@ public abstract class BubbleBase : MonoBehaviour
     public bool isStuck;
 
     protected List<string> friendlyTag =
-        new List<string> { "BubblePlatform", "Player", "BouncySurface", "StickySurface", "Wind" };
+        new List<string> { "CameraBounds", "BubblePlatform", "Player", "BouncySurface", "StickySurface", "Wind" };
 
     protected abstract void BubbleLogic();
 
