@@ -44,8 +44,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
         {
+            Die();
             RespawnInCheckPoint();
         }
+    }
+
+    private void Die()
+    {
+        currentHealth = maxHealth;
     }
 
     public void AddScore(int points)

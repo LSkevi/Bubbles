@@ -5,24 +5,20 @@ using Unity.Cinemachine;
 public class CameraSwitch : MonoBehaviour
 {
     public CinemachineCamera myCamera;
+    public CinemachineBasicMultiChannelPerlin cameraNoise;
+    public float amplitude;
+    public float frequency;
     public float duration = 0.5f;
-    public float magnitude = 0.5f;
-    private Vector3 initialPosition;
-    private float noiseSeedX;
-    private float noiseSeedY;
 
-    void Start()
+    private void Start()
     {
-        if (myCamera != null)
-            initialPosition = myCamera.transform.localPosition;
-
-        noiseSeedX = Random.Range(0f, 100f);
-        noiseSeedY = Random.Range(0f, 100f);
+        cameraNoise.AmplitudeGain = 0f;
+        cameraNoise.FrequencyGain = frequency;
     }
 
     public void Shake()
     {
-        if (myCamera != null)
+        if (myCamera != null && cameraNoise != null)
             StartCoroutine(ShakeCoroutine());
     }
 
@@ -30,29 +26,17 @@ public class CameraSwitch : MonoBehaviour
     {
         float elapsedTime = 0f;
 
+        cameraNoise.AmplitudeGain = amplitude;
+
         while (elapsedTime < duration)
         {
-            // Gera deslocamentos baseados no Perlin Noise
-            float offsetX = (Mathf.PerlinNoise(noiseSeedX, elapsedTime * 10f) - 0.5f) * 2f * magnitude;
-            float offsetY = (Mathf.PerlinNoise(noiseSeedY, elapsedTime * 10f) - 0.5f) * 2f * magnitude;
-
-            // Aplica os deslocamentos à posição da câmera
-            myCamera.transform.localPosition = new Vector3(
-                initialPosition.x + offsetX,
-                initialPosition.y + offsetY,
-                initialPosition.z
-            );
-
             elapsedTime += Time.deltaTime;
-
             yield return null;
         }
 
-        myCamera.transform.localPosition = initialPosition;
+        cameraNoise.AmplitudeGain = 0f;
     }
 }
-
-
 
 //void OnTriggerEnter2D(Collider2D collision)
 //{
