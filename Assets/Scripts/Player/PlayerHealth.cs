@@ -3,13 +3,9 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
-<<<<<<< Updated upstream
+    [Header("Health Settings")]
     public static PlayerHealth Instance;
     public int maxHealth = 3; // Vida máxima do jogador
-=======
-    [Header("Health Settings")]
-    public int maxHealth = 3;
->>>>>>> Stashed changes
     public int currentHealth;
     public bool isShieldActive;
     public Vector2 spawnPoint;
