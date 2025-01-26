@@ -2343,7 +2343,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.1875
-    functionName: TriggerJumpForce
+    functionName: Jump
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

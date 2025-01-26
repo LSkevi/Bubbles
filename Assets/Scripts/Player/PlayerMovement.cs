@@ -4,11 +4,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    #region Movoment
+    #region Movement
     [Header("Components")]
     public Rigidbody2D rb;
-    public Animator animator;
+    public Animator anim;
     public GameObject groundCheck;
+    public Transform bubbleParent;
     [HideInInspector]
     public float moveInput;
 
@@ -29,8 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip walkAudio;
     public AudioClip jumpAudio;
 
-    [Header("States")]
-    public MoveStates currentState;
+    //[Header("States")]
+    //public MoveStates currentState;
 
     // Eventos
     public event Action OnPlayerJump;
@@ -38,8 +39,11 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         IsGrounded();
-        UpdateState(currentState);
-        HandleStateTransitions();
+        anim.SetBool("IsGrounded", IsGrounded());
+        anim.SetFloat("HorizontalDirection", moveInput);
+        anim.SetFloat("VerticalVelocity", rb.linearVelocityY);
+        //UpdateState(currentState);
+        //HandleStateTransitions();
     }
 
     private void FixedUpdate()
@@ -57,9 +61,9 @@ public class PlayerMovement : MonoBehaviour
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-        Vector3 scale = transform.localScale;
+        Vector3 scale = bubbleParent.localScale;
         scale.x *= -1;
-        transform.localScale = scale;
+        bubbleParent.localScale = scale;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -85,10 +89,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            anim.SetTrigger("Jump");
             OnPlayerJump?.Invoke();
-
-            //AudioManager.Instance.PlayAudio(jumpAudio);
+            AudioManager.Instance.PlaySFX(jumpAudio);
         }
     }
 
@@ -100,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Animations
-    public enum MoveStates
+    /*public enum MoveStates
     {
         IdleRight,
         IdleLeft,
@@ -110,8 +113,8 @@ public class PlayerMovement : MonoBehaviour
         Fall,
         LandingLeft,
         LandingRight
-    }
-
+    }*/
+    /*
     private void UpdateState(MoveStates newState)
     {
         if (currentState == newState) return;
@@ -153,8 +156,8 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
     }
-
-    private void HandleStateTransitions()
+    */
+    /*private void HandleStateTransitions()
     {
         // Idle e Walk
         if (isGrounded && Mathf.Abs(rb.linearVelocity.y) < 0.1f)
@@ -187,6 +190,6 @@ public class PlayerMovement : MonoBehaviour
             currentState = isFacingRight ? MoveStates.LandingRight : MoveStates.LandingLeft;
             return;
         }
-    }
+    }*/
     #endregion
 }
