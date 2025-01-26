@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
+    public static PlayerHealth Instance;
     public int maxHealth = 3; // Vida máxima do jogador
     public int currentHealth;
     public bool isShieldActive;
@@ -10,6 +11,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public int score = 0; // Pontuação do jogador
     public int pointsForExtraLife = 100; // Pontos necessários para ganhar uma vida
+
+    private void Awake() {
+        Instance = this;
+    }
 
     void Start()
     {
