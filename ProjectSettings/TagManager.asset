@@ -11,6 +11,7 @@ TagManager:
   - Wind
   - StickySurface
   - CameraBounds
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
