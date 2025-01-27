@@ -68224,7 +68224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.01
+      value: -9.72
       objectReference: {fileID: 0}
     - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -68257,6 +68257,10 @@ PrefabInstance:
     - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4854442157693744497, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: message
+      value: Use the green shield bubble to pass through obstacles.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -141980,6 +141984,7 @@ Transform:
   - {fileID: 272665196}
   - {fileID: 1595710937}
   - {fileID: 1099424654}
+  - {fileID: 1736773878}
   m_Father: {fileID: 1637530097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &925084106
@@ -142524,7 +142529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9
+      value: 7.06
       objectReference: {fileID: 0}
     - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -142557,6 +142562,10 @@ PrefabInstance:
     - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4854442157693744497, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: message
+      value: Use the red bubble to destroy slime walls.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -142947,7 +142956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.96
+      value: -15.74
       objectReference: {fileID: 0}
     - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -142983,8 +142992,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4854442157693744497, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: message
-      value: "Use o bot\xE3o direito do mouse para mudar de bolha e o bot\xE3o esquerdo
-        para soltar bolhas "
+      value: Use left click to launch a bubble, and right click to switch bubbles. 
+        Climb onto the blue bubble.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -143353,7 +143362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.96
+      value: -15.67
       objectReference: {fileID: 0}
     - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -143386,6 +143395,10 @@ PrefabInstance:
     - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4854442157693744497, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: message
+      value: Use the yellow bubble to creatre a horizontal platform.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -148557,6 +148570,72 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4854882843934251780, guid: 3e11d81d876f01946976220db598e7e8, type: 3}
   m_PrefabInstance: {fileID: 433246471}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1736773877
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 890006780}
+    m_Modifications:
+    - target: {fileID: 1052326082682571984, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: m_Name
+      value: Sign (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 34.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4854442157693744497, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: message
+      value: Use the bubbles to enable levers.
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+--- !u!4 &1736773878 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1288667110049624520, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+  m_PrefabInstance: {fileID: 1736773877}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1745560812
 GameObject:
