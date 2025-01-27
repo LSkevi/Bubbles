@@ -3,11 +3,11 @@ using UnityEngine;
 public class VerticalBubble : BubbleBase
 {
     [Header("Own Variables")]
-    public float floatSpeed = 1f; // Velocidade de subida da bolha
+    public float floatSpeed = 1f;
     private bool isPlayerInside;
     private bool isPlayerJumping;
 
-    private PlayerMovement playerMovement; // Referência para o PlayerMovement
+    private PlayerMovement playerMovement;
     private JumpFuncion jumpFuncion;
 
     void FixedUpdate() => BubbleLogic();
