@@ -79,11 +79,11 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void LoadVolumes() {
-        masterSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("Master Volume"));
+        masterSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("Master Volume", 0.5f));
         ChangeMasterVolume(masterSlider.value);
-        bgmSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("BGM Volume"));
+        bgmSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("BGM Volume", 0.5f));
         ChangeBGMVolume(bgmSlider.value);
-        sfxSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("SFX Volume"));
+        sfxSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("SFX Volume", 0.5f));
         ChangeSFXVolume(sfxSlider.value);
     }
 
