@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Gerador_de_Vento_0: 6873704958670208561
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

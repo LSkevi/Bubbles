@@ -1,4 +1,5 @@
 using Assets.Scripts.Interfaces;
+using System;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
@@ -8,6 +9,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public int maxHealth = 3; // Vida máxima do jogador
     public int currentHealth;
     public bool isShieldActive;
+    private Vector2 firstSpawnPoint;
     public Vector2 spawnPoint;
 
     [Header("Score Settings")]
@@ -18,12 +20,15 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public int maxAmmo = 7; // Máximo de munição
     public int currentAmmo = 7; // Munição inicial
 
+    public event Action OnDamageTaken;
+
     private void Awake() {
         Instance = this;
     }
 
     void Start()
     {
+        firstSpawnPoint = transform.position;
         if (spawnPoint == Vector2.zero) spawnPoint = transform.position;
         currentHealth = maxHealth; // Começa com a vida cheia
         currentAmmo = maxAmmo; // Começa com munição cheia
@@ -35,20 +40,20 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         if (isShieldActive)
         {
+            OnDamageTaken?.Invoke();
             Debug.Log("ShieldBubble blocking damage!");
             return;
         }
 
         GetComponent<Collider2D>().enabled = false;
         currentHealth -= damage;
+        RespawnInCheckPoint();
+
         Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
         Invoke("ReanableCollider",0.2f);
 
         if (currentHealth <= 0)
-        {
             Die();
-            RespawnInCheckPoint();
-        }
     }
 
     void ReanableCollider() {
@@ -102,6 +107,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void RespawnInCheckPoint()
     {
         if (spawnPoint == null) return;
+
+        if(currentHealth <= 0) transform.position = firstSpawnPoint;
         else transform.position = spawnPoint;
     }
 
