@@ -14,7 +14,6 @@ public class JumpFuncion : MonoBehaviour
         {
             pm.rb.linearVelocity = 
                 new Vector2(pm.rb.linearVelocity.x, pm.jumpForce);
-            //pm.OnPlayerJump?.Invoke();
 
             OnPlayerJump?.Invoke();
             AudioManager.Instance.PlaySFX(pm.jumpAudio);
@@ -24,9 +23,6 @@ public class JumpFuncion : MonoBehaviour
         {
             pm.rb.linearVelocity = 
                 new Vector2(pm.rb.linearVelocity.x, pm.jumpForce * 0.5f);
-
-            OnPlayerJump?.Invoke();
-            AudioManager.Instance.PlaySFX(pm.jumpAudio);
         }
     }
 

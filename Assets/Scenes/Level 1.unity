@@ -149176,7 +149176,7 @@ PrefabInstance:
     - target: {fileID: 4546217511805239225, guid: c395c04ca1befbd439160dac54af00bc, type: 3}
       propertyPath: CameraSwitch
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7104269040088813165}
     - target: {fileID: 4546217511805239225, guid: c395c04ca1befbd439160dac54af00bc, type: 3}
       propertyPath: PlayerHealth
       value: 
@@ -149439,6 +149439,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22e7f0e7dcab2b4409fa3723314e2be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7104269040088813165 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8166947547119852499, guid: fd7161ab8eae90e41972d650752ccf8e, type: 3}
+  m_PrefabInstance: {fileID: 7104269040088813161}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ce153d30dec13489313a3c83ed5c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

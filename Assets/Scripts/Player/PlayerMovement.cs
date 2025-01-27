@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     //public MoveStates currentState;
 
     // Eventos
-    public event Action OnPlayerJump;
+    //public event Action OnPlayerJump;
 
     private void Update()
     {
