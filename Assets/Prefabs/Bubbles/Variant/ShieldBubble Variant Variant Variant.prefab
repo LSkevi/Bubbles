@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShieldBubble Variant Variant Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6875824040057330792, guid: 630b4dcebbc34da468d2c6f04028315e, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7863225479903761318, guid: 630b4dcebbc34da468d2c6f04028315e, type: 3}
       propertyPath: m_Color.b
       value: 0.15294118
