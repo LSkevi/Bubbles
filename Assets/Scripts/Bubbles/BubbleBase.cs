@@ -15,7 +15,7 @@ public abstract class BubbleBase : MonoBehaviour
     public AudioClip popBubbleSound;
 
     protected List<string> friendlyTag =
-        new List<string> { "CameraBounds", "BubblePlatform", "Player", "BouncySurface", "StickySurface", "Wind" };
+        new List<string> { "CameraBounds", "BubblePlatform", "Player", "BouncySurface", "StickySurface", "Wind", "Checkpoint" };
 
     protected abstract void BubbleLogic();
 
