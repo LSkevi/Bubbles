@@ -31,7 +31,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        //PlayerManager.Instance.CameraSwitch.Shake();
+        PlayerManager.Instance.CameraSwitch.Shake();
+
         if (isShieldActive)
         {
             Debug.Log("ShieldBubble blocking damage!");
@@ -42,6 +43,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         currentHealth -= damage;
         Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
         Invoke("ReanableCollider",0.2f);
+
         if (currentHealth <= 0)
         {
             Die();
