@@ -7,6 +7,7 @@ public class ShieldBubble : BubbleBase
     private void Awake()
     {
         friendlyTag.Add("Ground");
+        PlayerManager.Instance.PlayerHealth.OnDamageTaken += BubbleLogic;
     }
 
     private void Start()
@@ -14,16 +15,13 @@ public class ShieldBubble : BubbleBase
         PlayerManager.Instance.PlayerHealth.isShieldActive = true;
     }
 
-    protected override void BubbleLogic() { }
+    protected override void BubbleLogic() 
+    {
+        PlayerManager.Instance.PlayerHealth.isShieldActive = false;
+        PopBubble();
+    }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!friendlyTag.Contains(collision.gameObject.tag))
-        {
-            PlayerManager.Instance.PlayerHealth.isShieldActive = true;
-
-            Debug.Log($"Quem me estourou foi: {collision.gameObject.tag}");
-            PopBubble();
-        }
     }
 }
