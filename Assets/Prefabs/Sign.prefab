@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1288667110049624520}
   - component: {fileID: 7645914063097636107}
   - component: {fileID: 4854442157693744497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sign
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8633905028336699094}
   - component: {fileID: 5091009076511777833}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2221699789361567910}
   - component: {fileID: 6895449418395811492}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sign Text BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 7724624425789710817}
   - component: {fileID: 5533408159237492234}
   - component: {fileID: 2332293327637646063}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sign Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
