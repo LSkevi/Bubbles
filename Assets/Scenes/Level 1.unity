@@ -142531,6 +142531,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4854442157693744497, guid: ffafb611ec2f8864a9bb0c8fa11712fb, type: 3}
+      propertyPath: message
+      value: "Use o bot\xE3o direito do mouse para mudar de bolha e o bot\xE3o esquerdo
+        para soltar bolhas "
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
